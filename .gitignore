@@ -1,2 +1,2 @@
-system/cache*
+system\storage\cache
 *.log
