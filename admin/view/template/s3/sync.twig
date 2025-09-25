@@ -1,0 +1,37 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <a id="sync" href="{{ sync }}" data-toggle="tooltip" title="{{ button_sync }}" class="btn btn-primary"><i class="fa fa-refresh"></i> &nbsp;&nbsp;{{ button_sync }}</a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="alert alert-info"><i class="fa fa-info"></i> {{ text_info }}</div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-exclamation-triangle"></i> {{ text_list }}</h3>
+      </div>
+      <div class="panel-body">
+        {% if output %}
+        <pre>{{ output }}</pre>
+        {% else %}
+        {{ text_blank }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript"><!--
+  $('#sync').click(function() {
+    $(this).html('<i class="fa fa-spinner fa-spin"></i>').attr('disabled', 'true');
+  });
+//--></script>
+{{ footer }}

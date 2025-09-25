@@ -1,0 +1,140 @@
+#questionanswer {
+	background:#F8F8F8;
+	border:1px solid #CCCCCC; 
+	margin-left:0; 
+	margin-right:0; 
+	padding:3px; 
+	width:100%; 
+	min-height:50px;
+}	
+
+#questionanswer table {
+	width:100%;
+}
+#questionanswer table tr td:first-child {
+	width:10%;
+}
+
+#questionanswer table tr td:last-child {
+	width:90%;
+}
+.enter_text {
+	float:left;
+}
+
+.enter_text2 {
+	float:left; 
+	margin-left:10px;
+}
+
+.clear {
+	clear:both;
+}
+
+#tab-questionanswer .input-group{
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.oc2 #tab-questionanswer .input-group .input-group-btn {
+	width: 1%;
+}
+
+.oc2 .tmdmodal .text-center{
+	text-align:center;
+}
+
+#tab-questionanswer .panel{
+	margin-bottom: 5px;
+}
+
+#qustionheading{
+	font-weight:normal;
+}
+
+#tab-questionanswer .panel-title .fa-chevron-right{
+	padding: 3px 5px 3px 6px;
+}
+
+#tab-questionanswer .panel-title .fa-chevron-down{
+	padding: 3px 4px 3px 4px;
+}
+
+#tab-questionanswer .well{
+	background-color:transparent;
+}
+
+.text-danger{
+	color:#ff0000;
+}
+#tab-questionanswer .panel-warning{
+	border-radius:0px;
+	border:1px solid #ddd;
+	margin-bottom:20px; 
+}
+
+.tmdmodal .modal-body form{
+	border: 4px solid #ddd;
+	padding: 10px;
+}
+#tab-questionanswer .panel .panel-heading a {
+	text-decoration: none;
+}
+
+.site-wrapper #tab-questionanswer .panel .panel-heading {
+    display: -webkit-box;
+}
+
+.site-wrapper #tab-questionanswer .panel-body {
+	margin:0 !important;
+}
+
+.tmdmodal .captcha .form-group > div, .tmdmodal .captcha .form-group > label{
+	width: 100%;
+}
+.tmdmodal .captcha .form-group > label {
+	text-align: left;
+}
+.tmdmodal .captcha .form-group  #input-captcha {
+	margin: 0 0 10px;
+	max-width: 100%;
+}
+
+.site-wrapper .tmdmodal .form-group {
+	display: inline-block;
+    width: 100%;
+}
+.site-wrapper .tmdmodal .form-group > div {
+	padding: 0;
+}
+.tmdmodal .captcha #input-captcha+img {
+	margin:0;
+}
+
+.site-wrapper .tmdqus-ans-filter-row .input-group .form-control{
+	height: 38px;
+}
+
+/* == RTL css start here == */
+html[dir="rtl"] .panel-heading .panel-title .pull-right {
+    float: left!important;
+}
+
+html[dir="rtl"] .tmdmodal .close {
+	float: left !important;
+}
+html[dir="rtl"] .tmdmodal .captcha .form-group > label {
+	text-align: right;
+}
+
+@media(max-width:768px){
+	.pull-right {
+		float: none !important;
+	}
+	
+	.tmdqus-ans-filter-row .first-div{
+		margin: 0 0 12px;
+		text-align: center;
+	}
+	
+}

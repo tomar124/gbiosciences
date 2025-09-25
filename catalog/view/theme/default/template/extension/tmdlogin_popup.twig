@@ -1,0 +1,53 @@
+<div id="login" class="tmdmodal" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{ text_askquestion }}</h4>
+			</div>
+			<div class="modal-body">
+				<h4 class="text-center">{{ text_loginplz }}</h4>
+			</div>
+		 </div>
+	</div>
+</div>
+
+<style type="text/css">
+.btn-ask{
+	border-radius: 0px; 
+	border-color:{{ askbtnbg }}!important;
+	background:{{ askbtnbg }}!important;
+	Color:{{ askbtncolor }}!important;
+}
+.tmdmodal .modal-header,#tab-questionanswer .btn-primary, .tmdmodal .btn-primary{
+	border-color:{{ btnbg }}!important;
+	background:{{ btnbg }}!important;
+	color:{{ btncolor }}!important;
+	border-radius: 0px;
+}
+.tmdmodal .modal-header .close,.tmdmodal .modal-header .modal-title{
+	color:{{ btncolor }}!important;
+	font-weight:bold;
+	opacity: 1;
+}
+#tab-questionanswer .panel-heading{
+	background-color:{{ qsbg }}!important;
+	border-color:{{ qsbg }}!important;
+}
+#tab-questionanswer .panel-heading a,#tab-questionanswer span b{
+	color:{{ qscolor }}!important;
+}
+#tab-questionanswer .text-success{
+	color:{{ btnbg }}!important;
+}
+#tab-questionanswer .panel-body{
+	background-color:{{ ansbg }}!important;
+	color:{{ anscolor }}!important;
+}
+#tab-questionanswer .panel-title .fa{
+	background-color:{{ btnbg }}!important;
+	color:{{ btncolor }}!important;
+	border-radius: 50%;
+}
+</style>

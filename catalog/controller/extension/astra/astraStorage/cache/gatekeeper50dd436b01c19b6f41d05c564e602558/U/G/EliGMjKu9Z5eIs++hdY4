@@ -1,0 +1,71 @@
+<?php return array (
+  0 => 9223372036854775807,
+  1 => 
+  array (
+    'waf' => 
+    array (
+      'httpMethods' => 
+      array (
+        0 => 'GET',
+        1 => 'POST',
+      ),
+      'blockedCountry' => 
+      array (
+      ),
+      'trustedCountry' => 
+      array (
+      ),
+      'customThresholds' => 
+      array (
+        'attackThreshold' => NULL,
+        'loginBlockDuration' => NULL,
+        'attackBlockDuration' => NULL,
+        'loginFailureThreshold' => NULL,
+      ),
+      'allowForeignChars' => false,
+      'defaultThresholds' => 
+      array (
+        'attackThresholdLow' => 15,
+        'attackThresholdHigh' => 5,
+        'attackThresholdMedium' => 10,
+        'loginBlockDurationLow' => 5,
+        'attackBlockDurationLow' => 5,
+        'loginBlockDurationHigh' => 15,
+        'attackBlockDurationHigh' => 15,
+        'loginBlockDurationMedium' => 10,
+        'loginFailureThresholdLow' => 15,
+        'attackBlockDurationMedium' => 10,
+        'loginFailureThresholdHigh' => 5,
+        'loginFailureThresholdMedium' => 10,
+      ),
+      'verifySearchCrawlers' => true,
+    ),
+    'scanner' => 
+    array (
+      'ignoredFiles' => 
+      array (
+      ),
+      'ignoredPaths' => 
+      array (
+      ),
+      'scanInterval' => '21',
+      'scanSchedule' => 'daily',
+      'lowResourceMode' => false,
+      'requestedScanEmailNotifications' => true,
+      'scheduledScanEmailNotifications' => true,
+    ),
+    'securityLevel' => 'low',
+    'uploadScanner' => 
+    array (
+      'enabled' => true,
+      'maxUploadSizeMB' => 24,
+      'allowedExtensions' => '',
+      'blockedExtensions' => '386,acc*,acm,act*,apk,app,ash*,asm*,asx*,ax,bat,bin,ccc,cgi,cmd,com*,cpl,cpp,csh,dll,drv,elf,exe,fxp,gad*,hta*,htp*,ico,inf,ins,inx,ipa,isu,job,js,jse,ksh,lnk,msc,msi,msp,mst,net,ocx,ops,org,osx,out,paf,php*,pif,pl,prg,ps1,reg,rgs,rs,run,scr*,sct,shb,shs,sql*,sys,u3p,url,vb,vbe,vbs*,wor*,ws,wsf,xsl',
+    ),
+    'protectionMode' => 'monitoring',
+    'sealConfigured' => true,
+    'loginProtection' => true,
+    'protectionEnabled' => false,
+    'autoUpdateGatekeeper' => true,
+  ),
+);

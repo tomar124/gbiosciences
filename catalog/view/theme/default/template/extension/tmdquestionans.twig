@@ -1,0 +1,131 @@
+<div id="tab-questionanswer">
+	<h2 class="text-center"></h2>
+	<div class="well well-sm">
+		<div class="row tmdqus-ans-filter-row" style="margin-bottom:1em;margin-top:1em;">
+			<div class="col-sm-5 col-xs-12 first-div">
+				<a href="{% if not logged %}{{ login_popup }}{% else %}{{ question_popup }}{% endif %}" type="button" data-toggle="modal" class="btn btn-ask addquestionpopup" data-target="#question-modal" >{{ text_askquestion }}  </a>
+			</div>
+		</div>
+		
+		{% if hasquestions %}
+		{% for questions in hasquestions %}
+		<div class="panel panel-warning">
+			<div class="panel-heading bg-warning">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ questions.user_question_id }}">
+					<h3 class="panel-title">
+						<i class="fa fa-chevron-right" aria-hidden="true"></i>
+						{{ questions.queestion }}
+						<span class="text-success pull-right">{{ text_answers }} ({{ questions.totalanswer }})</span>
+					</h3>
+				</a>
+			</div>
+
+			<div id="collapse{{ questions.user_question_id }}" class="panel-collapse collapse">
+				<div class="panel-body">
+					{% if questions.answer %}
+					{% for answers in questions.answer %}
+					<p>{{ answers.answer }}<br/>
+						 <p><strong>{{ answers.username }}</strong>
+							{{ answers.answer_add }}</p>
+					</p>
+					<hr>
+					{% endfor %}
+					{% endif %}
+					<!-- Tmd update work -->
+					<a href="{% if not logged %}{{ login_popup }}{% else %}{{ answer_popup }}{% endif %}"  rel="{{ questions.user_question_id }}" rel2="{{ questions.queestion }}" type="button" data-toggle="modal" class="btn btn-primary tmdmodellink" data-target="#answer-modal" title="Add Your Answer" >{{ text_answerss }}  </a>
+					<!-- Tmd update work -->
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		{% else %}
+		
+		{% endif %}
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.tmdmodellink').click(function(){
+		$user_question_id = $(this).attr('rel');
+		$question = $(this).attr('rel2');
+		$('#userquestionid').attr('value',$user_question_id)
+		$('.qustionheading').html($question)
+	})
+})
+</script>
+<div class="modal fade tmdmodal" id="answer-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<script type="text/javascript">              
+$(document).on('click','.tmdmodellink',function(e) {
+	$user_question_id = $(this).attr('rel');
+	$location = $(this).attr('href');
+	$('#answer-modal').load($location+'&user_question_id='+$user_question_id);
+});
+</script>
+<div class="modal fade tmdmodal" id="question-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<script type="text/javascript">              
+$(document).on('click','.addquestionpopup',function(e) {
+	$('#question-modal').load($(this).attr('href'));
+});
+</script>
+<script type="text/javascript">
+$('#search-button').on('click', function() {
+	var url = 'index.php?route=extension/tmdquestionans&product_id={{ product_id }}&loadstatus=1';
+
+	var filter_search = $('input[name=\'filter_search\']').val();
+
+	if (filter_search) {
+		url += '&filter_search=' + encodeURIComponent(filter_search);
+	}
+
+	$('#tab-questionanswer').load(url);
+});
+</script>
+<script type="text/javascript">
+jQuery('.openall').click(function() {
+jQuery('a[data-parent="#accordion"]').trigger('click');
+
+    if($(this).html()=='<i class="fa fa-plus"></i>') {
+          $(this).html('<i class="fa fa-minus"></i>');
+    } else {
+          $(this).html('<i class="fa fa-plus"></i>');
+    }
+})
+</script>
+<style type="text/css">
+.btn-ask, .btn-ask:hover, .site-wrapper .btn-ask:hover{
+	border-radius: 0px; border-color:{{ askbtnbg }}!important;
+	background:{{ askbtnbg }}!important;
+	color:{{ askbtncolor }}!important;
+}
+.tmdmodal .modal-header,#tab-questionanswer .btn-primary{
+	border-color:{{ btnbg }}!important;
+	background:{{ btnbg }}!important;
+	color:{{ btncolor }}!important;
+	border-radius: 0px;
+}
+.tmdmodal .modal-header .close,.tmdmodal .modal-header .modal-title{
+	color:{{ btncolor }}!important;
+	font-weight:bold;
+	opacity: 1;
+}
+#tab-questionanswer .panel-heading{
+	background-color:{{ qsbg }}!important;
+	border-color:{{ qsbg }}!important;
+}
+#tab-questionanswer .panel-heading a,#tab-questionanswer span b{
+	color:{{ qscolor }}!important;
+}
+#tab-questionanswer .text-success{
+	color:{{ btnbg }}!important;
+}
+#tab-questionanswer .panel-body{
+	background-color:{{ ansbg }}!important;
+	color:{{ anscolor }}!important;
+}
+#tab-questionanswer .panel-title .fa{
+	background-color:{{ btnbg }}!important;
+	color:{{ btncolor }}!important;
+	border-radius: 50%;
+}
+</style>

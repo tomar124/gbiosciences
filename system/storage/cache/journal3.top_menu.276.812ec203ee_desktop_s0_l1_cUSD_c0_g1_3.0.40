@@ -1,0 +1,238 @@
+<?php $val = array (
+  'css' => '.top-menu-276>ul>.top-menu-item-1>a{text-align:left}.top-menu-276>ul>.top-menu-item-1>a>.links-text{display:block}.top-menu-276 > ul > .top-menu-item-1 > a .count-badge{position:relative}.top-menu-276>ul>.top-menu-item-2>a{text-align:left}.top-menu-276>ul>.top-menu-item-2>a>.links-text{display:block}.top-menu-276 > ul > .top-menu-item-2 > a .count-badge{position:relative}.top-menu-276>ul>.top-menu-item-3>a{text-align:left}.top-menu-276>ul>.top-menu-item-3>a>.links-text{display:block}.top-menu-276 > ul > .top-menu-item-3 > a .count-badge{position:relative}.top-menu-276>ul>.top-menu-item-4>a{text-align:left}.top-menu-276>ul>.top-menu-item-4>a>.links-text{display:block}.top-menu-276 > ul > .top-menu-item-4 > a .count-badge{position:relative}.top-menu-276 .j-menu li.top-menu-item-5>a::before{content:\'\\ead9\' !important;font-family:icomoon !important}.top-menu-276>ul>.top-menu-item-5>a{text-align:center}.top-menu-276>ul>.top-menu-item-5>a>.links-text{display:none}.top-menu-276 > ul > .top-menu-item-5 > a .count-badge{position:absolute;top:auto;right:auto}.top-menu-276 li.top-menu-item-6>a::before{content:\'\\e990\' !important;font-family:icomoon !important}.top-menu-276 li.top-menu-item-7>a::before{content:\'\\ebdd\' !important;font-family:icomoon !important}',
+  'fonts' => 
+  array (
+  ),
+  'settings' => 
+  array (
+    'scheduledStatus' => 
+    array (
+      'from' => '',
+      'to' => '',
+      'between' => true,
+    ),
+    'status' => true,
+    'id' => 'top-menu-68d540d7e1478',
+    'module_id' => 276,
+    'classes' => 
+    array (
+      0 => 'top-menu',
+      1 => 'top-menu-276',
+    ),
+    'items' => 
+    array (
+      1 => 
+      array (
+        'title' => 'ABOUT',
+        'link' => 
+        array (
+          'type' => 'information',
+          'id' => '4',
+          'href' => 'https://gbiosciences.local/About-Us',
+          'name' => 'About Us',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'classes' => 
+        array (
+          0 => 'menu-item',
+          1 => 'top-menu-item',
+          2 => 'top-menu-item-1',
+          'multi-level' => false,
+          'dropdown' => false,
+          'drop-menu' => false,
+          'icon-only' => false,
+        ),
+        'items' => 
+        array (
+        ),
+      ),
+      2 => 
+      array (
+        'title' => 'QUOTE LIST',
+        'link' => 
+        array (
+          'type' => 'page',
+          'id' => '',
+          'href' => 'https://gbiosciences.local/wishlist',
+          'name' => '',
+          'total' => '{{ $wishlist }}',
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+            0 => 'wishlist-badge',
+          ),
+        ),
+        'classes' => 
+        array (
+          0 => 'menu-item',
+          1 => 'top-menu-item',
+          2 => 'top-menu-item-2',
+          'multi-level' => false,
+          'dropdown' => false,
+          'drop-menu' => false,
+          'icon-only' => false,
+        ),
+        'items' => 
+        array (
+        ),
+      ),
+      3 => 
+      array (
+        'title' => 'LITERATURE SEARCH',
+        'link' => 
+        array (
+          'type' => 'custom',
+          'id' => '',
+          'href' => 'search&type=literature',
+          'name' => '',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'classes' => 
+        array (
+          0 => 'menu-item',
+          1 => 'top-menu-item',
+          2 => 'top-menu-item-3',
+          'multi-level' => false,
+          'dropdown' => false,
+          'drop-menu' => false,
+          'icon-only' => false,
+        ),
+        'items' => 
+        array (
+        ),
+      ),
+      4 => 
+      array (
+        'title' => 'CONTACT US',
+        'link' => 
+        array (
+          'type' => 'page',
+          'id' => '',
+          'href' => 'https://gbiosciences.local/contact',
+          'name' => '',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'classes' => 
+        array (
+          0 => 'menu-item',
+          1 => 'top-menu-item',
+          2 => 'top-menu-item-4',
+          'multi-level' => false,
+          'dropdown' => false,
+          'drop-menu' => false,
+          'icon-only' => false,
+        ),
+        'items' => 
+        array (
+        ),
+      ),
+      5 => 
+      array (
+        'title' => 'LOGIN',
+        'link' => 
+        array (
+          'type' => 'page',
+          'id' => '',
+          'href' => 'https://gbiosciences.local/login',
+          'name' => '',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'classes' => 
+        array (
+          0 => 'menu-item',
+          1 => 'top-menu-item',
+          2 => 'top-menu-item-5',
+          'multi-level' => false,
+          'dropdown' => true,
+          'drop-menu' => true,
+          'icon-only' => true,
+        ),
+        'items' => 
+        array (
+          6 => 
+          array (
+            'title' => 'LOGIN',
+            'link' => 
+            array (
+              'type' => 'page',
+              'id' => '',
+              'href' => 'https://gbiosciences.local/login',
+              'name' => '',
+              'total' => NULL,
+              'attrs' => 
+              array (
+              ),
+              'classes' => 
+              array (
+              ),
+            ),
+            'classes' => 
+            array (
+              0 => 'menu-item',
+              1 => 'top-menu-item-6',
+              'dropdown' => false,
+              'icon-only' => NULL,
+            ),
+            'items' => 
+            array (
+            ),
+          ),
+          7 => 
+          array (
+            'title' => 'REGISTER',
+            'link' => 
+            array (
+              'type' => 'page',
+              'id' => '',
+              'href' => 'https://gbiosciences.local/register',
+              'name' => '',
+              'total' => NULL,
+              'attrs' => 
+              array (
+              ),
+              'classes' => 
+              array (
+              ),
+            ),
+            'classes' => 
+            array (
+              0 => 'menu-item',
+              1 => 'top-menu-item-7',
+              'dropdown' => false,
+              'icon-only' => NULL,
+            ),
+            'items' => 
+            array (
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+);

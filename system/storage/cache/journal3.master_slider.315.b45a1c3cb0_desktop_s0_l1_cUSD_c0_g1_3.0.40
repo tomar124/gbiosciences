@@ -1,0 +1,226 @@
+<?php $val = array (
+  'css' => '.module-master_slider-315 .ms-view{overflow:hidden}.module-master_slider-315 .static-text-1{top:0;left:0;right:auto;bottom:auto;transform:none}.module-master_slider-315 .static-text-1
+span{transform:scale(calc(100 / 100));transform-origin:center}.module-master_slider-315 .static-text-2{top:auto;left:0;right:auto;bottom:0;transform:translate3d(0, 0, 0)}.module-master_slider-315 .static-text-2
+span{transform:scale(calc(100 / 100));transform-origin:center}.module-master_slider-315 .ms-nav-next{display:flex;left:auto;right:0;top:50%;bottom:auto;transform:translateY(-50%)}.module-master_slider-315 .ms-nav-prev{display:flex;left:0;right:auto;top:50%;bottom:auto;transform:translateY(-50%)}.module-master_slider-315 .ms-nav-next::before, .module-master_slider-315 .ms-nav-prev::before{content:\'\\e5c8\' !important;font-family:icomoon !important}.module-master_slider-315 .ms-nav-next, .module-master_slider-315 .ms-nav-prev{width:50px;height:50px}.module-master_slider-315 .ms-bullets{display:block;top:auto;bottom:0;left:50%;right:auto;transform:translateX(-50%)}.module-master_slider-315 .ms-bullets .ms-bullets-count{flex-direction:row}.module-master_slider-315 .ms-bullets .ms-bullet{margin:calc(5px / 2) !important;border-radius:10px}.module-master_slider-315 .ms-thumb-list{display:block;padding:10px
+0;top:auto !important;bottom:0 !important;order:2}.module-master_slider-315 .ms-thumb-list .ms-thumb-frame{margin-right:10px !important;opacity: .75}.module-master_slider-315 .ms-thumb-frame{border-width:0px}.module-master_slider-315 .ms-timerbar{display:none;top:0 !important;bottom:auto !important}.module-master_slider-315 .master-slider .ms-time-bar{height:4px !important}',
+  'fonts' => 
+  array (
+  ),
+  'settings' => 
+  array (
+    'schedule' => 
+    array (
+      'from' => '',
+      'to' => '',
+      'between' => true,
+    ),
+    'shuffle' => false,
+    'imageDimensions' => 
+    array (
+      'width' => 650,
+      'height' => 300,
+      'resize' => 'fill',
+    ),
+    'sliderDimensions' => 
+    array (
+      'width' => NULL,
+      'height' => NULL,
+      'resize' => 'fill',
+    ),
+    'parallaxMode' => false,
+    'parallax' => '25',
+    'layout' => 'default',
+    'staticTextType' => 'text',
+    'staticText' => '',
+    'staticTextLink' => 
+    array (
+      'type' => '',
+      'id' => '',
+      'href' => '',
+      'name' => '',
+      'total' => NULL,
+      'attrs' => 
+      array (
+      ),
+      'classes' => 
+      array (
+      ),
+    ),
+    'static2TextType' => 'text',
+    'static2Text' => '',
+    'static2TextLink' => 
+    array (
+      'type' => '',
+      'id' => '',
+      'href' => '',
+      'name' => '',
+      'total' => NULL,
+      'attrs' => 
+      array (
+      ),
+      'classes' => 
+      array (
+      ),
+    ),
+    'delay' => '2000',
+    'thumbnails' => false,
+    'thumbnailsDimensions' => 
+    array (
+      'width' => 50,
+      'height' => 50,
+      'resize' => 'fill',
+    ),
+    'lazyLoad' => false,
+    'status' => true,
+    'id' => 'master_slider-68d5259564ac5',
+    'module_id' => 315,
+    'classes' => 
+    array (
+      0 => 'module',
+      1 => 'module-master_slider',
+      2 => 'module-master_slider-315',
+      'fullscreen-slider' => false,
+    ),
+    'width' => 650,
+    'height' => 300,
+    'options' => 
+    array (
+      'width' => 650,
+      'height' => 300,
+      'layout' => 'default',
+      'smoothHeight' => false,
+      'centerControls' => false,
+      'parallaxMode' => 'swipe',
+      'instantStartLayers' => true,
+      'loop' => true,
+      'dir' => 'h',
+      'autoHeight' => false,
+      'rtl' => false,
+      'startOnAppear' => false,
+      'autoplay' => true,
+      'overPause' => true,
+      'shuffle' => false,
+      'view' => 'basic',
+      'speed' => '30',
+      'swipe' => true,
+      'mouse' => false,
+      'controls' => 
+      array (
+        'timebar' => 
+        array (
+          'autohide' => false,
+          'inset' => true,
+          'align' => 'top',
+        ),
+      ),
+    ),
+    'first_image' => 'https://cdn.gbiosciences.com/cache/homepagecache/Techbanner1-1300x600w-650x300.png',
+    'first_alt' => '',
+    'items' => 
+    array (
+      1 => 
+      array (
+        'type' => 'image',
+        'alt' => '',
+        'videoType' => 'html5',
+        'link' => 
+        array (
+          'type' => '',
+          'id' => '',
+          'href' => '',
+          'name' => '',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'id' => '315-1',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-1',
+          2 => 'ms-slide',
+        ),
+        'delay' => 2.0,
+        'image' => 'https://cdn.gbiosciences.com/cache/homepagecache/Techbanner1-1300x600w-650x300.png',
+        'image2x' => 'https://cdn.gbiosciences.com/cache/homepagecache/Techbanner1-1300x600w-1300x600.png',
+        'thumb' => false,
+        'items' => 
+        array (
+        ),
+      ),
+      2 => 
+      array (
+        'type' => 'image',
+        'alt' => '',
+        'videoType' => 'html5',
+        'link' => 
+        array (
+          'type' => '',
+          'id' => '',
+          'href' => '',
+          'name' => '',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'id' => '315-2',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-2',
+          2 => 'ms-slide',
+        ),
+        'delay' => 2.0,
+        'image' => 'https://cdn.gbiosciences.com/cache/homepagecache/Techbanner2-1300x600w-650x300.png',
+        'image2x' => 'https://cdn.gbiosciences.com/cache/homepagecache/Techbanner2-1300x600w-1300x600.png',
+        'thumb' => false,
+        'items' => 
+        array (
+        ),
+      ),
+      3 => 
+      array (
+        'type' => 'image',
+        'alt' => '',
+        'videoType' => 'html5',
+        'link' => 
+        array (
+          'type' => '',
+          'id' => '',
+          'href' => '',
+          'name' => '',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'id' => '315-3',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-3',
+          2 => 'ms-slide',
+        ),
+        'delay' => 2.0,
+        'image' => 'https://cdn.gbiosciences.com/cache/homepagecache/Techbanner3-1300x600w-650x300.png',
+        'image2x' => 'https://cdn.gbiosciences.com/cache/homepagecache/Techbanner3-1300x600w-1300x600.png',
+        'thumb' => false,
+        'items' => 
+        array (
+        ),
+      ),
+    ),
+    'first_image2x' => 'https://cdn.gbiosciences.com/cache/homepagecache/Techbanner1-1300x600w-1300x600.png',
+  ),
+);

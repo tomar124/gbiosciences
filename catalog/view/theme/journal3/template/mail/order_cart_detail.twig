@@ -1,0 +1,44 @@
+  <!-- cart detail -->
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; margin-bottom: 20px; color: #25616f;">
+    <thead>
+      <tr>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; background-color: #F4F4F4; font-weight: bold; text-align: left; padding: 7px;">{{ text_product }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; background-color: #F4F4F4; font-weight: bold; text-align: left; padding: 7px;">{{ text_model }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; background-color: #F4F4F4; font-weight: bold; text-align: right; padding: 7px;">{{ text_quantity }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; background-color: #F4F4F4; font-weight: bold; text-align: right; padding: 7px;">{{ text_price }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; background-color: #F4F4F4; font-weight: bold; text-align: right; padding: 7px;">{{ text_total }}</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: left; padding: 7px;">{{ product.name }}
+          {#% for option in product['option'] %}
+          <br />
+          &nbsp;<small> - {{ option.name }} : {{ option.value }}</small>
+          {% endfor %#}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: left; padding: 7px;">{{ product.model }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: right; padding: 7px;">{{ product.quantity }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: right; padding: 7px;">{{ product.price }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: right; padding: 7px;">{{ product.total }}</td>
+      </tr>
+      {% endfor %}
+      {% for voucher in vouchers %}
+      <tr>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: left; padding: 7px;">{{ voucher.description }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: left; padding: 7px;"></td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: right; padding: 7px;">1</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: right; padding: 7px;">{{ voucher.amount }}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: right; padding: 7px;">{{ voucher.amount }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      {% for total in totals %}
+      <tr>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: right; padding: 7px;" colspan="4"><b>{{ total.title }} :</b></td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: right; padding: 7px;">{{ total.value }}</td>
+      </tr>
+      {% endfor %}
+    </tfoot>
+  </table>

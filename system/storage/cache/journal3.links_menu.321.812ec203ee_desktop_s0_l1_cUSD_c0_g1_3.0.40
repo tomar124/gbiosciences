@@ -1,0 +1,121 @@
+<?php $val = array (
+  'css' => 'div.links-menu-321 .title.module-title{font-size:17px;color:rgba(74, 74, 74, 1);font-weight:700}div.links-menu-321 .module-body{display:block}div.links-menu-321 .menu-item{border-width:1px 0 0 0}div.links-menu-321 .menu-item a .links-text{white-space:normal;font-family:proxima_novaregular;font-size:16px;color:rgba(74, 74, 74, 1)}div.links-menu-321 .menu-item
+a{padding-bottom:3px}div.links-menu-321 .menu-item a:hover .links-text{color:rgba(136, 58, 60, 1)}div.links-menu-321 .count-badge{display:none}.phone footer  div.links-menu-321 .module-title::before{display:none}.phone footer  div.links-menu-321 .module-title+.module-body>li{display:flex}',
+  'fonts' => 
+  array (
+  ),
+  'settings' => 
+  array (
+    'schedule' => 
+    array (
+      'from' => '',
+      'to' => '',
+      'between' => true,
+    ),
+    'title' => 'CORPORATE',
+    'status' => true,
+    'id' => 'links-menu-68d540d805f04',
+    'module_id' => 321,
+    'classes' => 
+    array (
+      0 => 'links-menu',
+      1 => 'links-menu-321',
+    ),
+    'items' => 
+    array (
+      1 => 
+      array (
+        'title' => 'Privacy Policy',
+        'link' => 
+        array (
+          'type' => 'information',
+          'id' => '3',
+          'href' => 'https://gbiosciences.local/Email-Privacy-Policy',
+          'name' => 'Privacy Policy',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'label' => '',
+        'classes' => 
+        array (
+          0 => 'menu-item',
+          1 => 'links-menu-item',
+          2 => 'links-menu-item-1',
+          'multi-level' => false,
+          'dropdown' => false,
+          'drop-menu' => false,
+        ),
+        'items' => 
+        array (
+        ),
+      ),
+      2 => 
+      array (
+        'title' => 'Terms & Conditions',
+        'link' => 
+        array (
+          'type' => 'information',
+          'id' => '5',
+          'href' => 'https://gbiosciences.local/Terms-and-Conditions',
+          'name' => 'Terms &amp; Conditions',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'label' => '',
+        'classes' => 
+        array (
+          0 => 'menu-item',
+          1 => 'links-menu-item',
+          2 => 'links-menu-item-2',
+          'multi-level' => false,
+          'dropdown' => false,
+          'drop-menu' => false,
+        ),
+        'items' => 
+        array (
+        ),
+      ),
+      3 => 
+      array (
+        'title' => 'Distributor List',
+        'link' => 
+        array (
+          'type' => 'custom',
+          'id' => '3',
+          'href' => 'distributors',
+          'name' => '',
+          'total' => NULL,
+          'attrs' => 
+          array (
+          ),
+          'classes' => 
+          array (
+          ),
+        ),
+        'label' => '',
+        'classes' => 
+        array (
+          0 => 'menu-item',
+          1 => 'links-menu-item',
+          2 => 'links-menu-item-3',
+          'multi-level' => false,
+          'dropdown' => false,
+          'drop-menu' => false,
+        ),
+        'items' => 
+        array (
+        ),
+      ),
+    ),
+  ),
+);

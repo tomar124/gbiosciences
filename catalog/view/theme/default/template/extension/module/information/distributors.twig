@@ -1,0 +1,75 @@
+{{ header }}
+<div class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">
+      <h1>{{ heading_title }}</h1>
+      {% if country %}
+        {% for countrys in country %}
+            <ul id="Accordion" style="padding:0;" class="accordion-new">
+                <li style="list-style: none;border:1px solid #ccc; padding: 0;" class="darken">
+                  <div data-toggle="collapse" data-target="#{{ countrys.country_id }}" onclick='change("cc{{ countrys.country_id }}");' style="margin: 0;text-transform: uppercase;color: #fff;font-size: 15px;font-weight: bold;padding: 10px 15px;background-color: rgba(39 ,93 ,110);"> {{ countrys.country }}
+                      <span id="cc{{ countrys.country_id }}" style="float:right">+</span></div>
+			<ul class="row collapse" id="{{ countrys.country_id }}" style="padding: 0px; margin: 0">
+                            <div class="table-responsive table-bquoteed table-hover list" style="margin: 15px">
+                            <table class="table" border="1" style="border:1px solid #ccc;font-size: 15px;text-align: center">
+                            <thead style="background-color: #ddd">
+                                <tr>
+                                  <td class="text-left">{{ text_name }}</td>
+                                  <td class="text-left">{{ text_email }}</td>
+                                  <td class="text-left">{{ text_website }}</td>
+                                  <td class="text-left">{{ text_country }}</td>
+                                  <td class="text-left">{{ text_address }}</td>
+                                  <td class="text-left">{{ text_phone }}</td>
+                                </tr>
+                            </thead>
+                              <tbody>
+                            {% if countries %}
+                            {% for countrie in countries %}
+                            {% if countrys.country_id == countrie.country %}
+                                <tr>
+                                    <td class="text-left">{{ countrie.companyname  ? countrie.companyname : '<p style="text-align: center">-</p>' }}</td>
+                                    <td class="text-left"><a href="mailto:{{ countrie.email }}">{{ countrie.email ? countrie.email : '<p style="text-align: center">-</p>' }}</a></td>
+                                    <td class="text-left"><a href="{{ countrie.website }}">{{ countrie.website ? countrie.website : '<p style="text-align: center">-</p>' }}</a></td>
+                                    <td class="text-left">{{ countrie.countryname ? countrie.countryname : '<p style="text-align: center">-</p>' }}</td>
+                                    <td class="text-left">{{ countrie.address  ? countrie.address : '<p style="text-align: center">-</p>' }}</td>
+                                    <td class="text-left">{{ countrie.mobilenumber ? countrie.mobilenumber : '<p style="text-align: center">-</p>' }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                              </tbody>
+                            </table>
+                            </div>
+			</ul>
+		</li>
+            </ul>
+        {% endfor %}
+        {% else %}
+        <p>No Distributor Found. </p>
+        {% endif %}
+      <?php echo $content_bottom; ?></div>
+    <?php echo $column_right; ?></div>
+</div>
+<script>
+  function change(id) {
+       var abc = document.getElementById(id).innerHTML;
+       if (abc == '-') {
+           document.getElementById(id).innerHTML = '+';
+       } else {
+           document.getElementById(id).innerHTML = '-';
+       }
+  }
+</script>
+{{ footer }}

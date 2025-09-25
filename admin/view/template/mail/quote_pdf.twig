@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{{ store_title }}</title>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+</head>
+<body style="font-family: Open Sans, sans-serif; font-size: 12px; color: #000000; margin: 10%;">
+  <div><a href="{{ store_url }}" title="{{ store_title }}"><img src="{{ logo }}" alt="{{ store_name }}" style="margin-bottom: 20px; border: none; width: 95%;" /></a>
+      <p>Please find the requested quote below. If you have any further questions please contact us at {{ store_email }} or on {{ store_telephone }}.</p>
+    <p style="margin-top: 0px; margin-bottom: 20px; color: #4F81C1;"><b>Customer Details</b></p>
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #000000; border-left: 1px solid #000000; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <th style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Name</th>
+        <th style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Telephone</th>
+        <th style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Email</th>
+        <th style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ name }}
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ telephone }}</td>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ email }}</td>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ country }}</td>
+      </tr>
+    </tbody>
+  </table>
+        <p style="margin-top: 0px; margin-bottom: 20px; color: #4F81C1;"><b>Quote </b></p>
+<p style="margin-top: 0px; margin-bottom: 20px;">Date: {{ quote_date | date('d') }}<sup>{{ quote_date | date('S') }}</sup>{{ quote_date | date('M, Y') }}
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #000000; border-left: 1px solid #000000; margin-bottom: 20px;">
+    <thead>
+      <tr>
+        <td style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Quote ID</td>
+        <td style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Cat. No.</td>
+        <td style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Product Name</td>
+        <td style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Quantity</td>
+        <td style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Quote Price (USD) per unit</td>
+        <td style="font-size: 12px; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background-color: #C0C0C0; font-weight: bold; text-align: left; padding: 7px; color: #000000;">Extended Price</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ product.quote_id }}</td>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ product.name }}</td>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ product.model }}</td>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ product.quantity }}</td>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ product.list_price }}</td>
+        <td style="font-size: 12px;	border-right: 1px solid #000000; border-bottom: 1px solid #000000; text-align: left; padding: 7px; color: #000000;">{{ product.quoted_price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<div style="font-size: 12px; text-align: left; padding: 7px; color: #000000;"><b>Comment: </b>{{ comment }}</div><br/><br/>
+<div>
+    The above quote is valid for 90 days. Shipping and handling is not included in the above quote.<br/><br/>
+    To order the item at the quoted price, go to <a href="{{ store_url }}">www.GBiosciences.com</a> and log in you your account. Click your name at the top right and then select “View your Quotes�? in the left panel. View the appropriate quote, adjust the quantity, if required, and then add to cart.<br/><br/>
+    Thank you for the opportunity.
+</div>
+</div>
+</body>
+</html>

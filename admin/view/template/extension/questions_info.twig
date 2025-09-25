@@ -1,0 +1,130 @@
+{{ header }}{{ column_left }}
+<div id="content">
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="pull-right">
+				<button type="submit" form="form-questions" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary hide"><i class="fa fa-save"></i></button>
+				<a href="{{ cancel }}" data-toggle="tooltip" title="cancel" class="btn btn-default"><i class="fa fa-reply"></i></a>
+			</div>
+			<h1>{{ heading_title }}</h1>
+			<ul class="breadcrumb">
+				{% for breadcrumb in breadcrumbs %}
+				<li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+				{% endfor %}
+			</ul>						
+		</div>
+	</div>
+
+	<div class="container-fluid">    
+		<div class="panel panel-default">
+			<div class="panel-heading" style="display:flex;justify-content: space-between;align-items: flex-start;">			
+				<h4 style="line-height:24px;">{{ questiononproduct }} ?</h4>
+				<span class="pull-right"><a data-toggle="tooltip" title="View Product" class="btn btn-info" class="prolink" href="{{ productlink }}" target="_blank">{{ productname }}</a></span>
+			</div>
+			
+			<div class="panel-body">
+				<div class="well">
+					<div class="row">
+						<div class="col-sm-8">
+							<div class="form-group">
+								<label class="control-label" for="input-project_name">{{ column_answered }}</label>
+								<input type="text" name="filter_answer" value="{{ filter_answer }}" placeholder="{{ column_answered }}" id="input-project_name" class="form-control" />
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<label class="control-label" for="button-filter">&nbsp;</label>
+								<button type="button" id="button-filter" class="btn btn-primary btn-block">
+									<i class="fa fa-filter"></i> {{ button_filter }}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-questions" class="form-horizontal">  
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>				
+									<td class="text-left">{{ column_answered }}</td>
+									<td class="text-left">{{ column_answerby }}</td>
+									<td class="text-left">{{ column_email }}</td>
+									<td class="text-left">{{ column_answered_date }}</td>
+									<td class="text-center">{{ column_action }}</td>
+								</tr>
+							</thead>          
+							<tbody>
+								{% if answers %}
+								{% for answer in answers %}
+								<tr class="indexdiv{{ answer.user_question_answer_id }}">					 
+									<td class="text-left">{{ answer.answer }}</td>
+									<td class="text-left">{{ answer.name }} </td>
+									<td class="text-left">{{ answer.email }}</td>
+									<td class="text-left">{{ answer.date_added }}</td>
+									<td class="text-center"><i class="fa fa-trash btn btn-danger deletebtn{{ answer.user_question_answer_id }}" data-toggle="tooltip" title="delete"></i></td>
+								</tr>
+								<script type="text/javascript">
+								$('.deletebtn{{ answer.user_question_answer_id }}').click(function(){
+									var user_question_answer_id ='{{ answer.user_question_answer_id }}';
+										$.ajax({
+											url:'index.php?route=extension/questions/deleteanswers&user_token={{ user_token }}&user_question_answer_id='+user_question_answer_id,
+											type :'post',
+											dataType:'json',
+											beforeSend:function(){
+											return confirm("Are you sure you want to Delete");
+											},
+											success: function(json) {
+											 if (json['success']) {
+											   $('.indexdiv'+user_question_answer_id).remove(); 
+											}
+										}
+									});											  
+								});
+								</script>
+								{% endfor %}
+								{% endif %}
+							</tbody>
+						</table>
+					</div>	
+				
+					<div class="form-group">
+						<label class="control-label col-sm-2">{{ entry_answer }}</label>
+						<div class="col-sm-10">
+							<textarea name="answer" class="form-control" rows="7" placeholder="{{ entry_answer }}"></textarea>
+							{% if error_answer %}
+							<div class="text-danger">{{ error_answer }}</div>
+							{% endif %}
+						</div>
+					</div>
+					<button type="submit" form="form-formanswer" data-toggle="tooltip" title="" class="btn btn-primary pull-right">{{ button_answer }}</button>      
+				</form>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+$('#button-filter').on('click', function() {
+  url = 'index.php?route=extension/questions/info&user_token={{ user_token }}&user_question_id={{ user_question_id }}';
+
+  var filter_answer = $('input[name=\'filter_answer\']').val();
+
+  if (filter_answer) {
+    url += '&filter_answer=' + encodeURIComponent(filter_answer);
+  }
+
+  location = url;
+});
+</script>
+
+<style type="text/css">
+.padd0 {padding-left:2px;padding-right:0px;}
+.prolink{ font-size: 15px;
+border: solid 2px #ddd;
+padding: 5px;
+text-decoration: underline;}
+.prolink:hover{background:#B8B8B8; color:#fff;}
+</style>
+
+</div>
+{{ footer }}

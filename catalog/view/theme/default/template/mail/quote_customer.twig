@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{{ config_name }}</title>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+</head>
+<body style="font-family: Open Sans, sans-serif; font-size: 12px; color: #25616F;">
+  <div>
+  <p style="font-family: Open Sans, sans-serif; margin-top: 0px; margin-bottom: 20px;">{{ config_name }} has received your quote and we will review the requested quote normally within 24 hours.  Once reviewed you will receive an email with the approved quote.</p>
+  <p style="font-family: Open Sans, sans-serif; margin-top: 0px; margin-bottom: 20px;">To view the quote and check for approval,  please <a href="{{ config_url }}'/login'">click here</a> to log in to your account and review your price quote.  If you require further information please reach out to us at {{ config_email }}</p>
+  <p style="font-family: Open Sans, sans-serif; margin-top: 0px; margin-bottom: 20px;">Thank you for this opportunity </p>
+  <p style="font-family: Open Sans, sans-serif; margin-top: 0px; margin-bottom: 20px;">
+      {{ config_name }}<br/>
+      {{ config_address | convert_encoding('UTF-8', 'HTML-ENTITIES') }}<br/>
+      Tel: {{ config_telephone }}<br/>
+      Fax: {{ config_fax }}<br/>
+      {{ config_email }}<br/>
+      {{ config_url }}<br/>
+  </p>
+</div>
+</body>
+</html>

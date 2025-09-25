@@ -1,0 +1,165 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-quote" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}&nbsp#{{ quote_id }}</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="panel panel-primary">
+              <table class="table">
+                <tr>
+                  <td style="width: 1%;"><button data-toggle="tooltip" title="{{ text_customer_name }}" class="btn btn-info btn-xs"><i class="fa fa-user fa-fw"></i></button> </td>
+                  <td>{{ customer_name }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="panel panel-primary">
+              <table class="table">
+                <tr>
+                  <td style="width: 1%;"><button data-toggle="tooltip" title="{{ text_customer_id }}" class="btn btn-info btn-xs"><i class="fa fa-user fa-fw"></i></button></td>
+                  <td>{{ customer_id }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="panel panel-primary">
+              <table class="table">
+                <tr>
+                  <td style="width: 1%;"><button data-toggle="tooltip" title="{{ text_customer_location }}" class="btn btn-info btn-xs"><i class="fa fa-globe"></i></button></td>
+                  <td>{{ customer_location.name }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="panel panel-primary">
+              <table class="table">
+                <tr>
+                  <td style="width: 1%;"><button data-toggle="tooltip" title="Quote Request Location" class="btn btn-info btn-xs"><i class="fa fa-map-marker"></i></button></td>
+                  <td>{{ quote_location }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-quote">
+          <div class="content">
+          {% if quotes %}
+          <table class="table table-bordered table-hover" id="table_quote">
+            <thead>
+              <tr>
+                <td class="text-left name">{{ column_catalog_number }}</td>
+                <td class="text-left model">{{ column_product_name }}</td>
+                <td class="text-left quantity ">{{ column_quantity }}</td>
+                <td class="text-left price">{{ column_price }}</td>
+                <td class="text-left action">{{ column_action }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              {% set counter = '0' %} {% for quote in quotes %}
+              <tr id="row{{ counter }}">
+                <input type="hidden" value="{{ quote.product_id }}" name="product[{{ counter }}][product_id]" />
+                <input type="hidden" value="{{ customer_email }}" name="email" />
+                {% if quote.option %}
+                  {% for index,option in quote.option %}
+                    <input type="hidden" value="{{ option.product_option_id }}" name="product[{{ counter }}][option][{{ index }}][product_option_id]" />
+                    <input type="hidden" value="{{ option.product_option_value_id }}" name="product[{{ counter }}][option][{{ index }}][product_option_value_id]" />
+                    <input type="hidden" value="{{ option.option_id }}" name="product[{{ counter }}][option][{{ index }}][option_id]" />
+                    <input type="hidden" value="{{ option.option_value_id }}" name="product[{{ counter }}][option][{{ index }}][option_value_id]" />
+                    <input type="hidden" value="{{ option.name }}" name="product[{{ counter }}][option][{{ index }}][name]" />
+                    <input type="hidden" value="{{ option.value }}" name="product[{{ counter }}][option][{{ index }}][value]" />
+                    <input type="hidden" value="{{ option.type }}" name="product[{{ counter }}][option][{{ index }}][type]" />
+                    <input type="hidden" value="{{ option.quantity }}" name="product[{{ counter }}][option][{{ index }}][quantity]; ?>]" />
+                    <input type="hidden" value="{{ option.subtract }}" name="product[{{ counter }}][option][{{ index }}][subtract]" />
+                    <input type="hidden" value="{{ option.price }}" name="product[{{ counter }}][option][{{ index }}][price]" />
+                    <input type="hidden" value="{{ option.price_prefix }}" name="product[{{ counter }}][option][{{ index }}][price_prefix]" />
+                    <input type="hidden" value="{{ option.points }}" name="product[{{ counter }}][option][{{ index }}][points]" />
+                    <input type="hidden" value="{{ option.points_prefix }}" name="product[{{ counter }}][option][{{ index }}][points_prefix]" />
+                    <input type="hidden" value="{{ option.weight }}" name="product[{{ counter }}][option][{{ index }}][weight]" />
+                    <input type="hidden" value="{{ option.weight_prefix }}" name="product[{{ counter }}][option][{{ index }}][weight_prefix]" />
+                  {% endfor %}
+                {% endif %}
+                <td class="text-left name" name="quote_name"><a href="{{ quote.href }}">{{ quote.name }}</a></td>
+                <td class="text-left model">{{ quote.model }}</td>
+                <td class="text-left quantity">
+                  <input type="text" name="product[{{ counter }}][quantity]" value="{{ quote.quantity }}" class="form-control" />
+                </td>
+                <td class="text-right price">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                    <input type="text" name="product[{{ counter }}][price]" value="{{ quote.price }}" class="form-control" />
+                  </div>
+                  {% if quote.special_price > 1 %}
+                    <small class="text-danger text-left">Discounted Price - ${{ quote.special_price }}</small>
+                  {% endif %}
+                </td>
+                <td class="text-left">
+                  <button type="button" onclick="$('#row' + {{ counter }}).remove();" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                </td>
+             </tr>
+             {% set counter = counter + '1' %}{% endfor %}
+            </tbody>
+          </table>
+          </div>
+         {% endif %}
+          <div class="">
+            <label class="col-sm-1 control-label" for="input-status">{{ entry_status }}</label>
+            <div class="col-sm-3">
+              <select name="status" id="input-status" class="form-control">
+                <option value="0" {{ status == '0' ? 'selected' : '' }}>{{ text_pending }}</option>
+                <option value="1" {{ status == '1' ? 'selected' : '' }}>{{ text_reviewed }}</option>
+                <option value="2" {{ status == '2' ? 'selected' : '' }}>{{ text_expired }}</option>
+                <option value="3" {{ status == '3' ? 'selected' : '' }}>{{ text_rejected }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="">
+            <label class="col-sm-1 control-label" for="input-comment">{{ entry_comment }}</label>
+            <div class="col-sm-7">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-comments-o"></i></span>
+                <textarea name="comment" id="input-comment" placeholder="{{ entry_comment }}" class="form-control">{{ comment }}</textarea>
+              </div>
+            </div>
+          </div>
+       </form>  
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_history }}</h3>
+      </div>
+      <div class="panel-body">
+        <div id="history"></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"><!--
+    $('#history').delegate('.pagination a', 'click', function(e) {
+            e.preventDefault();
+
+            $('#history').load(this.href);
+    });
+
+    $('#history').load('index.php?route=catalog/quote/history&user_token={{ user_token }}&quote_id={{ quote_id }}');
+//--></script> 
+{{ footer }} 

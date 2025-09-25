@@ -1,0 +1,152 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success"><i class="fa fa-check-circle"></i>{{ success }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
+      </div>
+      <div class="panel-body">
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-5">
+            <label class="control-label" for="input-country">{{ entry_country }}</label>
+            <div class="form-group">
+              <select name="filter_country" id="input-country" class="form-control">
+                <option value="*">{{ text_select }}</option>
+                {% for country in countries %}
+                {% if country.country_id == filter_country %}
+                <option value="{{ country.country_id }}" selected="selected">{{ country.name }}</option>
+                {% else %}
+                <option value="{{ country.country_id }}">{{ country.name }}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>  
+            <div class="col-sm-5">
+              <div class="form-group">
+                
+                <label class="control-label" for="input-status">{{ entry_status }}</label>
+                <select name="filter_status" id="input-status" class="form-control">
+                  <option value="*">{{ text_select }}</option>  
+                  <option value="0" {{ filter_status== '0' ? 'selected' : '' }}>{{ text_pending }}</option>
+                  <option value="1" {{ filter_status== '1' ? 'selected' : '' }}>{{ text_reviewed }}</option>
+                  <option value="2" {{ filter_status== '2' ? 'selected' : '' }}>{{ text_expired }}</option>
+                  <option value="3" {{ filter_status== '3' ? 'selected' : '' }}>{{ text_rejected }}</option>
+                </select>
+              </div>
+            </div>
+              <div class="col-sm-1" style="padding-top: 37px;">
+                   <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> {{ button_filter }}</button>
+              </div>
+          </div>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data" id="form-quote">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <td class="text-center">{% if sort == 'q.quote_id' %}
+                      <a href="{{ sort_quote_id }}" class="{{ order | lower }}">{{ column_id }}</a>
+                      {% else %}
+                      <a href="{{ sort_quote_id }}">{{ column_id }}</a>
+                      {% endif %}</td>
+                  <td class="text-left">{% if sort == 'name' %}
+                      <a href="{{ sort_name }}" class="{{ order | lower }}">{{ column_name }}</a>
+                      {% else %}
+                      <a href="{{ sort_name }}">{{ column_name }}</a>
+                      {% endif %}</td>
+                  <td class="text-left">{% if sort == 'co.name' %}
+                      <a href="{{ sort_country }}" class="{{ order | lower  }}">{{ column_country }}</a>
+                      {% else %}
+                      <a href="{{ sort_country }}">{{ column_country }}</a>
+                      {% endif %}</td>
+                  <td class="text-center">{{ column_quote_price }}</td>
+                  <td class="text-center">{% if sort == 'q.created_on' %}
+                      <a href="{{ sort_added_on }}" class="{{ order | lower  }}">Added On</a>
+                      {% else %}
+                      <a href="{{ sort_added_on }}">Added On</a>
+                      {% endif %}</td>
+                  <td class="text-center">Expired On</td>
+                  <td class="text-left">{% if sort == 'q.status' %}
+                      <a href="{{ sort_status }}" class="{{ order | lower  }}">{{ column_status }}</a>
+                      {% else %}
+                      <a href="{{ sort_status }}">{{ column_status }}</a>
+                      {% endif %}</td>
+                  <td class="text-left">{{ button_edit }}</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% if quotes %}
+                {% for quote in quotes %}
+                <tr>
+                  <td class="text-center"># {{ quote.quote_id }}</td>
+                  <td class="text-left">{{ quote.name }}</td>
+                  <td class="text-left">{{ quote.country }}</td>
+                  <td class="text-center">{{ quote.quote_price }}</td>
+                  <td class="text-center">{{ quote.date_added }}</td>
+                  <td class="text-center">{{ quote.date_expired }}</td>
+                  <td class="text-left"><h4>
+                      {% if quote.status == 0 %}<span class="label label-primary">{{ text_pending }}</span>{% endif %}
+                      {% if quote.status == 1 %}<span class="label label-success">{{ text_reviewed }}</span>{% endif %}
+                      {% if quote.status == 2 %}<span class="label label-danger">{{ text_expired }}</span>{% endif %}
+                      {% if quote.status == 3 %}<span class="label label-danger">{{ text_rejected }}</span>{% endif %}
+                  </h4></td>
+                  <td class="text-left"><a href="{{ quote.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td class="text-center" colspan="8">{{ text_no_results }}</td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-sm-6 text-left">{{ pagination }}</div>
+          <div class="col-sm-6 text-right">{{ results }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"><!--
+$('#button-filter').on('click', function() {
+	var url = 'index.php?route=catalog/quote&user_token={{ user_token }}'
+        
+        var filter_country = $('select[name=\'filter_country\']').val();
+
+	if (filter_country != '*') {
+		url += '&filter_country=' + encodeURIComponent(filter_country);
+	}
+
+	var filter_status = $('select[name=\'filter_status\']').val();
+
+	if (filter_status != '*') {
+		url += '&filter_status=' + encodeURIComponent(filter_status);
+	}
+	location = url;
+});
+//--></script></div>
+{{ footer }}

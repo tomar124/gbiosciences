@@ -1,0 +1,319 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-feed" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab-setting" data-toggle="tab">{{ tab_setting }}</a></li>
+          <li><a href="#tab-custom" data-toggle="tab">{{ tab_custom }}</a></li>
+          <li><a href="#tab-sitemap" data-toggle="tab">{{ tab_sitemap }}</a></li>
+          <li><a href="#tab-sitemap-index" data-toggle="tab">{{ tab_sitemap_index }}</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab-setting">
+            <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-feed" class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_status %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_status" value="1" {% if feed_google_sitemap_pro_status %} {{ 'checked' }} {% endif %}> {{ text_enabled }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if not feed_google_sitemap_pro_status %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_status" value="0" {% if not feed_google_sitemap_pro_status %} {{ 'checked' }} {% endif %}> {{ text_disabled }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-products"><span data-toggle="tooltip" title="{{ help_max_url }}">{{ entry_max_url }}</span></label>
+                <div class="col-sm-3">
+                    <input type="number" name="feed_google_sitemap_pro_max_url_in_single_sitemap" value="{{ feed_google_sitemap_pro_max_url_in_single_sitemap }}" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-change_frequency">{{ entry_change_frequency }}</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_change_frequency == 'always' %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_change_frequency" value="always" {% if feed_google_sitemap_pro_change_frequency == 'always' %} {{ 'checked' }} {% endif %}> {{ text_always }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_change_frequency == 'daily' %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_change_frequency" value="daily" {% if feed_google_sitemap_pro_change_frequency == 'daily' %} {{ 'checked' }} {% endif %}> {{ text_daily }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_change_frequency == 'hourly' %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_change_frequency" value="hourly" {% if feed_google_sitemap_pro_change_frequency == 'hourly' %} {{ 'checked' }} {% endif %}> {{ text_hourly }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_change_frequency == 'monthly' %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_change_frequency" value="monthly" {% if feed_google_sitemap_pro_change_frequency == 'monthly' %} {{ 'checked' }} {% endif %}> {{ text_monthly }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_change_frequency == 'never' %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_change_frequency" value="never" {% if feed_google_sitemap_pro_change_frequency == 'never' %} {{ 'checked' }} {% endif %}> {{ text_never }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_change_frequency == 'weekly' %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_change_frequency" value="weekly" {% if feed_google_sitemap_pro_change_frequency == 'weekly' %} {{ 'checked' }} {% endif %}> {{ text_weekly }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_change_frequency == 'yearly' %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_change_frequency" value="yearly" {% if feed_google_sitemap_pro_change_frequency == 'yearly' %} {{ 'checked' }} {% endif %}> {{ text_yearly }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-products">{{ entry_products }}</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_products %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_products" value="1" {% if feed_google_sitemap_pro_products %} {{ 'checked' }} {% endif %}> {{ text_yes }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if not feed_google_sitemap_pro_products %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_products" value="0" {% if not feed_google_sitemap_pro_products %} {{ 'checked' }} {% endif %}> {{ text_no }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-categories">{{ entry_categories }}</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_categories %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_categories" value="1" {% if feed_google_sitemap_pro_categories %} {{ 'checked' }} {% endif %}> {{ text_yes }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if not feed_google_sitemap_pro_categories %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_categories" value="0" {% if not feed_google_sitemap_pro_categories %} {{ 'checked' }} {% endif %}> {{ text_no }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-informations">{{ entry_informations }}</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_informations %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_informations" value="1" {% if feed_google_sitemap_pro_informations %} {{ 'checked' }} {% endif %}> {{ text_yes }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if not feed_google_sitemap_pro_informations %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_informations" value="0" {% if not feed_google_sitemap_pro_informations %} {{ 'checked' }} {% endif %}> {{ text_no }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-product_images"><span data-toggle="tooltip" title="{{ help_product_images }}">{{ entry_product_images }}</span></label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_product_images %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_product_images" value="1" {% if feed_google_sitemap_pro_product_images %} {{ 'checked' }} {% endif %}> {{ text_yes }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if not feed_google_sitemap_pro_product_images %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_products" value="0" {% if not feed_google_sitemap_pro_product_images %} {{ 'checked' }} {% endif %}> {{ text_no }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-protocols">{{ entry_protocols }}</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_protocols %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_protocols" value="1" {% if feed_google_sitemap_pro_protocols %} {{ 'checked' }} {% endif %}> {{ text_yes }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if not feed_google_sitemap_pro_protocols %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_products" value="0" {% if not feed_google_sitemap_pro_protocols %} {{ 'checked' }} {% endif %}> {{ text_no }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-sds">{{ entry_sds }}</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_sds %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_sds" value="1" {% if feed_google_sitemap_pro_sds %} {{ 'checked' }} {% endif %}> {{ text_yes }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if not feed_google_sitemap_pro_sds %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_sds" value="0" {% if not feed_google_sitemap_pro_sds %} {{ 'checked' }} {% endif %}> {{ text_no }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-custom"><span data-toggle="tooltip" title="{{ help_custom }}">{{ entry_custom }}</span></label>
+                <div class="col-sm-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default btn-sm {% if feed_google_sitemap_pro_custom %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_pro_custom" value="1" {% if feed_google_sitemap_pro_custom %} {{ 'checked' }} {% endif %}> {{ text_yes }}
+                        </label>
+                        <label class="btn btn-default btn-sm {% if not feed_google_sitemap_pro_custom %} {{ 'active' }} {% endif %} ">
+                          <input type="radio" name="feed_google_sitemap_custom" value="0" {% if not feed_google_sitemap_pro_custom %} {{ 'checked' }} {% endif %}> {{ text_no }}
+                        </label>
+                    </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane" id="tab-custom">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i> {{ tab_custom }}</h3>
+              </div>
+              <div class="panel-body">
+                <div class="well">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">{{ info_custom }}</span>
+                        <input name="url" placeholder="{{ entry_custom_url }}" class="form-control" />
+                      </div>
+                    </div>
+                  </div><br/>
+                  <div class="row">
+                    <div class="col-sm-2 pull-right">
+                      <button id="button-add-custom" data-loading-text="{{ text_loading }}" class="btn btn-primary pull-right" data-toggle="tooltip" title="{{ button_add }}"><i class="fa fa-plus-square-o"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div id="custom"></div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-sitemap">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-10">
+                  <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ info_sitemap }}</div>
+                </div>
+                <div class="col-sm-2">
+                  <button id="generate_sitemap" class="btn btn-primary" data-loading-text="{{ text_loading }}">{{ text_generate_sitemap }}</button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="sitemaps" class="col-sm-12"></div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-sitemap-index">
+            <div class="col-sm-12">
+              <div class="row">
+                {% if not hasFiles %}
+                    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ warning_sitemap_index }}</div>
+                {% endif %}
+                <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ info_sitemap_index }}</div>
+                <div class="">
+                  <label class="col-sm-2 control-label" for="input-data-feed">{{ entry_sitemap_index_url }}</label>
+                  <div class="col-sm-10 well">{{ data_feed }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}
+<script type="text/javascript"><!--
+  $('#custom').delegate('.pagination a', 'click', function(e) {
+    e.preventDefault();
+
+    $('#custom').load(this.href);
+  });
+
+  $('#custom').load('index.php?route=extension/feed/google_sitemap_pro/custom&user_token={{ user_token }}');
+
+  $('#button-add-custom').on('click', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: 'index.php?route=extension/feed/google_sitemap_pro/addCustom&user_token={{ user_token }}',
+      type: 'post',
+      dataType: 'json',
+      data: 'url=' + encodeURIComponent($('#tab-custom input[name=\'url\']').val()),
+      beforeSend: function() {
+        $('#button-add-custom').button('loading');
+      },
+      complete: function() {
+        $('#button-add-custom').button('reset');
+      },
+      success: function(json) {
+        $('.alert-dismissible').remove();
+
+        if (json['error']) {
+           $('#tab-custom').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+        }
+
+        if (json['success']) {
+          $('#tab-custom').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+          $('#custom').load('index.php?route=extension/feed/google_sitemap_pro/custom&user_token={{ user_token }}');
+
+          $('#tab-custom input[name=\'url\']').val('');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
+  
+  $('#sitemaps').delegate('.pagination a', 'click', function(e) {
+    e.preventDefault();
+
+    $('#sitemaps').load(this.href);
+  });
+
+  $('#sitemaps').load('index.php?route=extension/feed/google_sitemap_pro/sitemaps&user_token={{ user_token }}');
+  
+  $('#generate_sitemap').on('click', function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: '{{ catalog }}index.php?route=api/sitemap/generateSitemap&api_token={{ api_token }}&store_id={{ store_id }}',
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function() {
+        $('#generate_sitemap').button('loading');
+      },
+      complete: function() {
+        $('#generate_sitemap').button('reset');
+      },
+      success: function(json) {
+        $('.alert-dismissible').remove();
+
+        if (json['error']) {
+           $('#tab-sitemap').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+        }
+
+        if (json['success']) {
+          $('#tab-sitemap').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+          $('#sitemaps').load('index.php?route=extension/feed/google_sitemap_pro/sitemaps&user_token={{ user_token }}');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
+  //--></script> 

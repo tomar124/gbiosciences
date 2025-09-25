@@ -1,0 +1,173 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-product" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i>{{ text_form }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-product" class="form-horizontal">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+            <li><a href="#tab-data" data-toggle="tab">{{ tab_data }}</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-general">
+              <ul class="nav nav-tabs" id="language">
+                {% for language in languages %}
+                <li><a href="#language{{ language.language_id }}" data-toggle="tab"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}" title="{{ language.name }}" /> {{ language.name }}</a></li>
+                {% endfor %}
+              </ul>
+              <div class="tab-content">
+                {% for language in languages %}
+                <div class="tab-pane" id="language{{ language.language_id }}">
+                    <div class="form-group required">
+                         <label class="col-sm-2 control-label" for="input-companyname{{ language.language_id }}">{{ entry_companyname }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="distributor_discription[{{ language.language_id }}][companyname]" value="{{ distributor_discription[language.language_id] ? distributor_discription[language.language_id].companyname}}" placeholder="{{ entry_companyname }}" id="input-companyname{{ language.language_id }}" class="form-control" />
+                         {% if error_companyname[language.language_id] %}
+                             <div class="text-danger">{{ error_companyname[language.language_id] }}</div>
+                         {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="col-sm-2 control-label" for="input-firstname{{ language.language_id }}">{{ entry_fristname }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="distributor_discription[{{ language.language_id }}][firstname]" value="{{ distributor_discription[language.language_id] ? distributor_discription[language.language_id].firstname}}" placeholder="{{ entry_fristname }}" id="input-firstname{{ language.language_id }}" class="form-control" />
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-lastname{{ language.language_id }}">{{ entry_lastname }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="distributor_discription[{{ language.language_id }}][lastname]" value="{{ distributor_discription[language.language_id] ? distributor_discription[language.language_id].lastname}}" placeholder="{{ entry_lastname }}" id="input-lastname{{ language.language_id }}" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-email{{ language.language_id }}">{{ entry_email }}</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="distributor_discription[{{ language.language_id }}][email]" value="{{ distributor_discription[language.language_id] ? distributor_discription[language.language_id].email}}" placeholder="{{ entry_email }}" id="input-email{{ language.language_id }}" class="form-control" />
+                        {% if error_email[language.language_id] %}
+                             <div class="text-danger">{{ error_email[language.language_id] }}</div>
+                         {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-secoundary-email{{ language.language_id }}">{{ entry_secoundary_email }}</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="distributor_discription[{{ language.language_id }}][secoundary_email]" value="{{ distributor_discription[language.language_id] ? distributor_discription[language.language_id].secoundary_email}}" placeholder="{{ entry_secoundary_email }}" id="input-secoundary-email{{ language.language_id }}" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-website{{ language.language_id }}">{{ entry_website }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="distributor_discription[{{ language.language_id}}][website]" value="{{ distributor_discription[language.language_id] ? distributor_discription[language.language_id].website}}" placeholder="{{ entry_website }}" id="input-website{{ language.language_id }}" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-address{{ language.language_id }}">{{ entry_address }}</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" name="distributor_discription[{{ language.language_id }}][address]" placeholder="{{ entry_address }}" id="input-address{{ language.language_id }}" class="form-control" />{{ distributor_discription[language.language_id] ? distributor_discription[language.language_id].address }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-city{{ language.language_id }}">{{ entry_city }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="distributor_discription[{{ language.language_id }}][city]" value="{{ distributor_discription[language.language_id] ? distributor_discription[language.language_id].city}}" placeholder="{{ entry_city }}" id="input-city{{ language.language_id }}" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-data">
+             <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-mobilenumber">{{ entry_mobilenumber }}</label>
+                <div class="col-sm-10">
+                    <input type="text" name="mobilenumber" value="{{ mobilenumber }}" placeholder="{{ entry_mobilenumber }}" id="input-mobilenumber" class="form-control" />
+                 {% if error_mobilenumbers %}
+                     <div class="text-danger">{{ error_mobilenumbers }}</div>
+                 {% endif %}
+                </div>
+             </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-officenumber">{{ entry_officenumber }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="officenumber" value="{{ officenumber }}" placeholder="{{ entry_officenumber }}" id="input-officenumber" class="form-control" />
+                </div>
+             </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-faxno">{{ entry_faxno }}</label>
+                <div class="col-sm-10">
+                    <input type="text" name="faxno" value="{{ faxno }}" placeholder="{{ entry_faxno }}" id="input-faxno" class="form-control" />
+                </div>
+             </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-country">{{ entry_country }}</label>
+                <div class="col-sm-10">
+                  <select name="country" id="input-country" class="form-control">
+                      <option value="">{{ text_select }}</option>
+                      {% for countrydata in countries %}
+                    <option value="{{ countrydata.country_id }}" {% if countrydata.country_id == country %}  selected=selected  {% endif %} >{{ countrydata.name }}</option>
+                    {% endfor %}
+                  </select>
+                  {% if error_countrys %}
+                  <div class="text-danger">{{ error_countrys }}</div>
+                  {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-pincode">{{ entry_pincode }}</label>
+                <div class="col-sm-10">
+                    <input type="text" name="pincode" value="{{ pincode }}" placeholder="{{ entry_pincode }}" id="input-pincode" class="form-control" />
+                </div>
+            </div>  
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-storage">{{ entry_storagenumber }}</label>
+                <div class="col-sm-10">
+                    <input type="text" name="storage" value="{{ storage }}" placeholder="{{ entry_storagenumber }}" id="input-storage" class="form-control" />
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                <div class="col-sm-10">
+                  <select name="status" id="input-status{{ language.language_id }}" class="form-control">
+
+                    {% if text_enabled ==  status %}
+                     <option value="{{ text_enabled }}" selected="selected">{{ text_enabled }}</option>
+                     <option value="{{ text_disabled }}" >{{ text_disabled }}</option>
+                    {% else %}
+                    <option value="{{ text_disabled }}" selected="selected">{{ text_disabled }}</option>
+                    <option value="{{ text_enabled }}" >{{ text_enabled }}</option>
+                    {% endif %}
+                  </select>
+                </div>
+            </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"><!--
+$('#language a:first').tab('show');
+$('#option a:first').tab('show');
+//--></script></div> 
+<?php echo $footer; ?>

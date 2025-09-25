@@ -1,0 +1,137 @@
+{{ header }}
+<div id="container" class="container j-container">
+  <div class="row">{{ column_left }}{{ column_right }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">
+      {{ content_top }}
+        <gcse:searchresults-only  linkTarget="_parent"></gcse:searchresults-only>
+        
+<style type='text/css'>
+    
+   /* Use a different font family for search results */
+   .gs-title, .gs-snippet, .gsc-control-cse, .gsc-refinementHeader .gsc-refinementhActive {
+        font-family: Open Sans;
+    }
+    
+   /* Add a border between individual search results */
+   .gs-webResult {
+        border: 1px solid #eee;
+        padding: 1em;
+    }
+    
+    .gs-webResult:hover { 
+        background-color: #eee;
+    }
+    
+    /* Do no display the count of search results */    
+    .gsc-result-info {
+        display: none;
+    }
+    
+    /* Hide the Google branding in search results */
+    .gcsc-branding {
+        display: none; 
+    }
+    
+    /* Hide the thumbnail images in search results */
+    .gsc-thumbnail {
+        display: none;
+   }
+    
+    /* Change the font size of the title of search results */
+    .gs-title a { 
+        font-size: 16px;  
+    }
+    
+    /* Change the font size of snippets inside search results */    
+    .gs-snippet {
+        font-size: 14px;
+    }
+    
+    /* Google Custom Search highlights matching words in bold, toggle that */
+    .gs-title b, .gs-snippet b {
+        font-weight: normal;
+    }
+    
+    /* Do no display the URL of web pages in search results */
+    .gsc-url-top, .gsc-url-bottom {
+        display: none;
+    }
+   
+    /* Highlight the pagination buttons at the bottom of search results */
+    .gsc-cursor-page {
+       font-size: 13px;
+        padding: 4px 8px;
+        /*border: 2px solid #ccc;*/
+    }
+    
+    .gsc-results .gsc-cursor-box .gsc-cursor-current-page{
+        background-color: white;
+        border-color : white;
+        color: #761d24;
+    }
+    
+    /*Hidding labels*/
+    .gs-per-result-labels{ display: none;}
+    
+    /*Editing Tabs*/
+    .gsc-tabHeader.gsc-tabhActive{ 
+        background-color: #761d24;
+        border-color: white;
+        color: white;
+    }
+    .gsc-tabHeader.gsc-tabhInactive{ 
+        background-color: #275e6e;
+        border-color: white;
+        color: white;
+    }
+    
+    .cse .gsc-tabHeader, .gsc-tabHeader{ font-size: 16px;}
+    
+    .gsc-tabsArea { 
+        border-color: #275e6e;
+    }
+    
+    .gsc-refinementHeader{
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    
+    .gsc-refinementHeader.gsc-refinementhActive{ 
+        color: #761d24;
+    }
+    
+    .gsc-refinementHeader.gsc-refinementhInactive{ 
+        text-decoration: none;
+        color: #275e6e;
+    }
+    
+    /*Ending Tabs */
+    /*Remove Sorting*/
+    
+    .gsc-above-wrapper-area{ 
+        display: none;
+    }
+    
+</style>
+
+
+      {{ content_bottom }}
+    </div>
+    </div>
+</div>
+<script><!--
+    /*$(document).ready(function() {
+        setInterval( function() 
+        {
+            $('.gcsc-branding').attr('style', 'display: none');
+        },10/*Time*/);
+    });*/
+--></script>
+{{ footer }}

@@ -1,0 +1,553 @@
+{% set stylePrefix = j3.document.isPopup('quickview') ? 'quickviewPageStyle' : 'productPageStyle' %}
+{% set direction = j3.settings.get(stylePrefix ~ 'AdditionalImagesPosition') == 'left' or j3.settings.get(stylePrefix ~ 'AdditionalImagesPosition') == 'right' ? 'vertical' : 'horizontal' %}
+{% set carousel = direction == 'vertical' or j3.settings.get(stylePrefix ~ 'AdditionalImagesCarousel') %}
+{% set carouselOptions = {
+  slidesPerView: 'auto',
+  spaceBetween: j3.settings.get(stylePrefix ~ 'AdditionalImagesSpacing')|default(0),
+  direction: direction
+} %}
+{% set galleryOptions = {
+  thumbWidth: j3.settings.get('image_dimensions_popup_thumb.width'),
+  thumbConHeight: j3.settings.get('image_dimensions_popup_thumb.height'),
+  addClass: 'lg-product-images'
+} %}
+{% set quickviewExpand = j3.settings.get('globalExpandCharactersLimit') > 0 and description and description|length <= j3.settings.get('globalExpandCharactersLimit') ? 'no-expand': '' %}
+{{ header }}
+{% if not j3.document.isPopup() %}
+<ul class="breadcrumb">
+  {% for breadcrumb in breadcrumbs %}
+  <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+  {% endfor %}
+</ul>
+{% if j3.settings.get('pageTitlePosition') == 'top' %}
+  <h1 class="title page-title"><span>{{ heading_title }}
+    <span class="citation_count">{{ citations_count }}</span>
+  </span></h1>
+{% endif %}
+{{ j3.loadController('journal3/layout', 'top') }}
+<div id="product-product" class="container">
+  <div class="row">{{ column_left }}
+    <div id="content" class="{{ class }}">
+      {% endif %}
+      {% if not j3.document.isPopup('options') %}
+        {% if j3.settings.get('pageTitlePosition') == 'default' or j3.document.isPopup('quickview') %}
+          <h1 class="title page-title">{{ heading_title }}
+            <span class="citation_count">{{ citations_count }}</span>
+          </h1>
+        {% endif %}
+      {% endif %}
+      {{ content_top }}
+      {% set classes = j3.classes({
+        'out-of-stock': not product_quantity,
+        'has-countdown': date_end,
+        'has-zero-price': not product_price_value,
+        'has-extra-button': product_extra_buttons,
+      }) %}
+      <div class="TestDebug product-info {{ classes }}">
+        {% if not j3.document.isPopup('options') %}
+        <div class="product-left">
+          <div class="product-image direction-{{ direction }} position-{{ j3.settings.get(stylePrefix ~ 'AdditionalImagesPosition') }}">
+            <div class="swiper main-image" data-options='{{ j3.carousel(j3.document.getJs(), stylePrefix ~ 'ImageCarouselStyle')|json_encode(constant('JSON_FORCE_OBJECT')) }}' {% if images|length > 1 and j3.settings.get(stylePrefix ~ 'AdditionalImagesStatus') and carousel and direction == 'vertical' %}style="width: calc(100% - {{ j3.settings.get('image_dimensions_additional.width') }}px)"{% endif %}>
+              <div class="swiper-container" {% if j3.isRTL() %}dir="rtl"{% endif %}>
+                <div class="swiper-wrapper">
+                  {% set gallery = [] %}
+                  {% for image in images %}
+                    
+            {% set gallery = gallery|merge([{src: image.popup, thumb: image.galleryThumb, alt: image.alt_text, subHtml: image.image_caption}]) %}
+            
+                    <div class="swiper-slide" {% if not j3.document.isPopup() and j3.settings.get(stylePrefix ~ 'GalleryStatus') %} data-gallery=".lightgallery-product-images" data-index="{{ loop.index0 }}" {% endif %}>
+                      
+            <img src="{{ image.image }}" {% if image.image2x %}srcset="{{ image.image }} 1x, {{ image.image2x }} 2x"{% endif %} data-largeimg="{{ image.popup }}" alt="{{ image.alt_text }}" title="{{ heading_title }}" width="{{ j3.settings.get('image_dimensions_thumb.width') }}" height="{{ j3.settings.get('image_dimensions_thumb.height') }}"/>
+            
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="swiper-controls">
+                <div class="swiper-buttons">
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+              {% if product_labels %}
+                <div class="product-labels">
+                  {% for id, label in product_labels %}
+                    <span class="product-label product-label-{{ id }} product-label-{{ label.display }}"><b>{{ label.label }}</b></span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            {% if images|length > 1 and j3.settings.get(stylePrefix ~ 'AdditionalImagesStatus') %}
+              {% if carousel %}
+                <div class="swiper additional-images" data-options='{{ carouselOptions|json_encode(constant('JSON_FORCE_OBJECT')) }}' {% if direction == 'vertical' %}style="width: {{ j3.settings.get('image_dimensions_additional.width') }}px"{% endif %}>
+                  <div class="swiper-container" {% if j3.isRTL() %}dir="rtl"{% endif %}>
+                    <div class="swiper-wrapper">
+                      {% for image in images %}
+                        <div class="swiper-slide additional-image" data-index="{{ loop.index0 }}">
+                          <img src="{{ image.thumb }}" {% if image.thumb2x %}srcset="{{ image.thumb }} 1x, {{ image.thumb2x }} 2x"{% endif %} alt="{{ heading_title }}" title="{{ heading_title }}"/>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="swiper-buttons">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+              {% else %}
+                <div class="additional-images">
+                  {% for image in images %}
+                    <div class="additional-image" data-index="{{ loop.index0 }}">
+                      
+            <img src="{{ image.thumb }}" alt="{{ image.alt_text }}" title="{{ heading_title }}"/>
+            
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+          {% if not j3.document.isPopup() and j3.settings.get(stylePrefix ~ 'GalleryStatus') %}
+          <div class="lightgallery lightgallery-product-images" data-images='{{ gallery|json_encode|e }}' data-options='{{ galleryOptions|json_encode(constant('JSON_FORCE_OBJECT')) }}'></div>
+          {% endif %}
+          {% if not j3.document.isPopup('options') %}
+            {% if product_blocks.image %}
+            <div class="product-blocks blocks-image">
+              {{ product_blocks.image|join }}
+            </div>
+            {% endif %}
+          {% endif %}
+          {% if j3.document.isPopup('quickview') and (j3.settings.get('quickviewDescription')and j3.settings.get('quickviewDescriptionPosition') == 'image') %}
+            <div class="description {{ quickviewExpand }}">
+              <div class="expand-block">
+                <div class="expand-content">
+                  {{ description }}
+                </div>
+                {% if j3.settings.get('quickviewExpandButton') %}
+                  <div class="block-expand-overlay"><a class="block-expand btn"></a></div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {% if tags and not j3.document.isPopup() and (j3.settings.get(stylePrefix ~ 'TagsPosition') == 'image') %}
+            <div class="tags">
+              <span class="tags-title">{{ text_tags }}</span>
+              {% for tag in tags %}
+                <a href="{{ tag.href }}">{{ tag.tag }}</a>
+                {% if not loop.last %}<b>,</b>{% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
+        <div class="product-right catalog-section">
+            <div class="row catalog-section-header">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 text-bold hidden-xs hidden-sm">
+                    Catalog
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 text-bold hidden-xs hidden-sm">Description</div>
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 text-bold hidden-xs hidden-sm">{{ column_gp_size }}</div>
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 text-bold text-center hidden-xs hidden-sm">{{ column_gp_price }}</div>
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 text-bold text-right hidden-xs hidden-sm">{{ column_gp_qty }}</div>
+            </div>
+            <div class="catalog-section-body">
+                {% set does_any_product_has_price = 0 %}
+                {% for child in childs %}
+                {% set child_id = child.child_id %}
+                    <div class="row catalog-section-item">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                            <div class="catalog-section-item-catalog hidden-lg hidden-md">
+                                <div class="text-bold">Catalog</div>
+                                {{ child.name }}
+                            </div>
+                            <div class="hidden-sm hidden-xs">{{ child.name }}</div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                            <div class="catalog-section-item-description hidden-lg hidden-md">
+                                <div class="text-bold">Description</div>
+                                {{ (child.info.model|striptags)|raw  }}
+                            </div>
+                            <div class="hidden-sm hidden-xs">{{ (child.info.model|striptags)|raw  }}</div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+                            <div class="catalog-section-item-size hidden-lg hidden-md">
+                                <div class="text-bold">{{ column_gp_size }}</div>
+                                {{ child.info.size }}
+                            </div>
+                            <div class="hidden-sm hidden-xs">{{ child.info.size }}</div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 text-center">
+                            <div class="hidden-sm hidden-xs">
+                                {% if not child.price %}
+                                <div class="product-price"><a href="javascript:open_popup(22);">Please Inquire</a></div>
+                                {% else %}
+                                    {% set does_any_product_has_price = 1 %}
+                                    {% if not child.special %}
+                                        {{ child.price }}
+                                     {% else %}
+                                       {{ child.special }}&nbsp;
+                                       <div class="product-price-old">{{ child.price }}</div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="catalog-section-item-price text-bold hidden-lg hidden-md text-right">
+                                {% if not child.price %}
+                                <div class="product-price"><a href="javascript:open_popup(22);">Please Inquire</a></div>
+                                {% else %}
+                                    {% if not child.special %}
+                                        {{ child.price }}
+                                     {% else %}
+                                       {{ child.special }}&nbsp;
+                                       <div class="product-price-old">{{ child.price }}</div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 text-right">
+                          {% if child.price %}
+                          <input type="hidden" name="product_id" id="product{{ child_id }}" value="{{ child_id }}" />
+                          <input name="quantity" placeholder="Qty" class="quantity-input" data-child-product-id="{{ child_id }}" id="quantity{{ child_id }}" type="text" value="{{ child.qty_now }}" autocomplete="off" />
+                          {% else %}
+                          -
+                          {% endif %}
+                        </div>
+                    </div>
+                        {% if not loop.last %}
+                            <hr class="catalog-section-item-separator" />
+                        {% endif %}
+                {% endfor %}
+            </div>
+            <div id="product" class="product-details pull-right">
+              {% if does_any_product_has_price %}
+              <div class="button-group-page">
+                <div class="buttons-wrapper">
+                  <div class="stepper-group cart-group">
+                    {% if j3.settings.get('catalogCartStatus') %}
+                      <a id="button-cart" data-loading-text="<span class='btn-text'>{{ button_cart }}</span>" class="btn btn-cart" {% if (j3.settings.get(stylePrefix ~ 'CartDisplay') == "icon") and (j3.settings.get(stylePrefix ~ 'CartTooltipStatus')) %} data-toggle="tooltip" data-tooltip-class="pp-cart-tooltip" data-placement="{{ j3.settings.get(stylePrefix ~ 'CartTooltipPosition') }}" title="{{ button_cart }}" {% endif %}><span class="btn-text">{{ button_cart }}</span></a>
+                    {% endif %}
+                  </div>
+                  {% if j3.settings.get('catalogWishlistStatus') or j3.settings.get('catalogCompareStatus') %}
+                    <div class="wishlist-compare">
+                      {% if not j3.document.isPopup('options') %}
+                        {% if j3.settings.get('catalogWishlistStatus') %}
+                        <a id="btn-wishlist" data-loading-text="<span class='btn-text'>{{ button_wishlist }}</span>" class="btn btn-wishlist" {% if (j3.settings.get(stylePrefix ~ 'WishlistDisplay') == "icon") and (j3.settings.get(stylePrefix ~ 'WishlistTooltipStatus')) %} data-toggle="tooltip" data-tooltip-class="pp-wishlist-tooltip" data-placement="{{ j3.settings.get(stylePrefix ~ 'WishlistTooltipPosition') }}" title="{{ button_wishlist }}" {% endif %}><span class="btn-text">{{ button_wishlist }}</span></a>
+                        {% endif %}
+
+                        {% if j3.settings.get('catalogCompareStatus') %}
+                        <a class="btn btn-compare" {% if (j3.settings.get(stylePrefix ~ 'CompareDisplay') == "icon") and (j3.settings.get(stylePrefix ~ 'CompareTooltipStatus')) %} data-toggle="tooltip" data-tooltip-class="pp-compare-tooltip" data-placement="{{ j3.settings.get(stylePrefix ~ 'CompareTooltipPosition') }}" title="{{ button_compare }}" {% endif %} onclick="parent.compare.add({{ product_id }});"><span class="btn-text">{{ button_compare }}</span></a>
+                        {% endif %}
+                      {% endif %}
+                      {% if j3.document.isPopup('quickview') %}
+                        <a class="btn btn-more-details" href="{{ view_more_url }}" target="_top" {% if (j3.settings.get(stylePrefix ~ 'MoreDetailsDisplay') == "icon") and (j3.settings.get(stylePrefix ~ 'MoreDetailsTooltipStatus')) %} data-toggle="tooltip" data-tooltip-class="more-details-tooltip" data-placement="{{ j3.settings.get(stylePrefix ~ 'MoreDetailsTooltipPosition') }}" title="{{ j3.settings.get('quickviewExtraText') }}" {% endif %}><span class="btn-text">{{ j3.settings.get('quickviewExtraText') }}</span></a>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+              {% endif %}
+              {% if not j3.document.isPopup('options') %}
+                {% if product_blocks.details %}
+                    {{ product_blocks.details|join }}
+                {% endif %}
+              {% endif %}
+            </div>
+            {% if not j3.document.isPopup('options') %}
+            {% if product_blocks.bottom %}
+            <div class="product-blocks blocks-bottom">
+              {{ product_blocks.bottom|join }}
+            </div>
+            {% endif %}
+            {% endif %}
+            {% if tags and not j3.document.isPopup() and (j3.settings.get(stylePrefix ~ 'TagsPosition') == 'details') %}
+              <div class="tags">
+                <span class="tags-title">{{ text_tags }}</span>
+                {% for tag in tags %}
+                  <a href="{{ tag.href }}">{{ tag.tag }}</a>
+                  {% if not loop.last %}<b>,</b>{% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+        </div>
+      </div>
+      {% if description and j3.document.isPopup('quickview') and j3.settings.get('quickviewDescription') and (j3.settings.get('quickviewDescriptionPosition') == 'default') %}
+        <div class="description {{ quickviewExpand }}">
+          <div class="expand-block">
+            <div class="expand-content">
+              {{ description }}
+            </div>
+            {% if j3.settings.get('quickviewExpandButton') %}
+              <div class="block-expand-overlay"><a class="block-expand btn"></a></div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      {% if not j3.document.isPopup('options') %}
+        {% if product_blocks.default %}
+        <div class="product-blocks blocks-default">
+          {{ product_blocks.default|join }}
+        </div>
+        {% endif %}
+      {% endif %}
+      {% if tags and not j3.document.isPopup() and (j3.settings.get(stylePrefix ~ 'TagsPosition') == 'default') %}
+        <div class="tags">
+          <span class="tags-title">{{ text_tags }}</span>
+          {% for tag in tags %}
+            <a href="{{ tag.href }}">{{ tag.tag }}</a>
+            {% if not loop.last %}<b>,</b>{% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if not j3.document.isPopup() %}
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{% endif %}
+<script type="text/javascript"><!--
+$("#btn-wishlist").click(function () {
+        var products = { products:[] };
+        $(".quantity-input").each(function () {
+            var product_id = $(this).attr('data-child-product-id');
+            var qty = $(this).val();
+            if (qty > 0) {
+                products.products.push({
+                    product_id: product_id,
+                    quantity: qty
+                });
+            }
+        });
+
+        if(products.products.length < 1){
+            alert('Please add quantity'); 
+            return false;
+        }
+
+        $.ajax({
+            url: 'index.php?route=account/wishlist/add',
+            type: 'post',
+            data: products,
+            dataType: 'json',
+            beforeSend: function () {
+              $('#btn-wishlist').button('loading');
+            },
+            complete: function () {
+              $('#btn-wishlist').button('reset');
+            },
+            success: function(json) {
+                $('.success, .warning, .attention, .information, .alert-dismissible, .text-danger').remove();
+
+                if ($('html').hasClass('popup-options')) {
+                    parent.$(".popup-options .popup-close").trigger('click');
+                }
+
+                if (json['notification']) {
+                    parent.show_notification(json['notification']);
+                } else {
+                    parent.$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                }
+
+                if (json['success']) {
+                    $('.success').fadeIn('slow');
+
+                    try {
+                        $('.wishlist-total .product-count').html(json['total'].match(/\(\d+\)/g)[0].replace('(', '').replace(')', ''));
+                    } catch (e) { }
+
+                    if (Journal.scrollToTop) {
+                        $('html, body').animate({ scrollTop: 0 }, 'slow');
+                    }
+                }
+            }
+        });
+});
+//--></script>
+<script>
+$("body").on("keypress", ".quantity-input", function (e) {
+        if (e.which != 8 && e.which != 45 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                alert("Input should be numeric");
+                return false;
+        }
+});
+</script>
+<script type="text/javascript"><!--
+$('#button-cart, [data-quick-buy]').on('click', function () {
+        var products = {products:[]};
+        $(".quantity-input").each(function () {
+            var product_id = $(this).attr('data-child-product-id');
+            var qty = $(this).val();
+
+            if(qty > 0){
+                products.products.push({
+                    product_id: product_id,
+                    quantity: qty
+                });
+            }
+        });
+
+        if(products.products.length < 1){
+            alert('Please add quantity'); 
+            return false;
+        }
+
+        var $btn = $(this);
+        $.ajax({
+            url: 'index.php?route=checkout/cart/add',
+            type: 'post',
+            data: products ,
+            dataType: 'json',
+            beforeSend: function () {
+              $('#button-cart').button('loading');
+            },
+            complete: function () {
+              $('#button-cart').button('reset');
+            },
+            success: function (json) {
+                $('.success, .warning, .attention, .information, .alert-dismissible, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if (json['error']) {
+                    if (json['error']['option']) {
+                        for (i in json['error']['option']) {
+                            var element = $('#input-option' + i.replace('_', '-'));
+
+                            if (element.parent().hasClass('input-group')) {
+                                element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                            } else {
+                                element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+                            }
+                        }
+                    }
+
+                    if (json['error']['request_quote']) {
+                        $('.title:eq(0)').after('<div class="alert alert-danger warning">' + json['error']['request_quote'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                    if (json['error']['recurring']) {
+                          $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+                    }
+
+                  // Highlight any found errors
+                  $('.text-danger').parent().addClass('has-error');
+                }
+
+                if (json['success']) {
+                    if ($('html').hasClass('popup-options')) {
+                        parent.$(".popup-options .popup-close").trigger('click');
+                    }
+
+                    if (json['notification']) {
+                        parent.show_notification(json['notification']);
+                    } else {
+                        parent.$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                    parent.$('#cart-total').html(json['total']);
+                    parent.$('#cart-items').html(json['items_count']);
+
+                    if (Journal['scrollToTop']) {
+                        parent.$('html, body').animate({ scrollTop: 0 }, 'slow');
+                    }
+
+                    parent.$('.cart-content ul').load('index.php?route=common/cart/info ul li');
+
+                    if (window.location.href.indexOf('quick_buy=true') !== -1) {
+                        parent.location.href = 'index.php?route=checkout/checkout';
+                    }
+
+                    if ($btn.data('quick-buy') !== undefined) {
+                        location = 'index.php?route=checkout/checkout';
+                    }
+                }
+            }
+        });
+});
+//--></script>
+<script type="text/javascript"><!--
+$('.date').datetimepicker({
+	language: '{{ datepicker }}',
+	pickTime: false
+});
+
+$('.datetime').datetimepicker({
+	language: '{{ datepicker }}',
+	pickDate: true,
+	pickTime: true
+});
+
+$('.time').datetimepicker({
+	language: '{{ datepicker }}',
+	pickDate: false
+});
+//--></script>
+<script type="text/javascript"><!--
+$('#review').delegate('.pagination a', 'click', function(e) {
+    e.preventDefault();
+
+    $('#review').fadeOut('slow');
+
+    $('#review').load(this.href);
+
+    $('#review').fadeIn('slow');
+});
+
+$('#review').load('index.php?route=product/product/review&product_id={{ product_id }}');
+
+$('#button-review').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=product/product/write&product_id={{ product_id }}',
+		type: 'post',
+		dataType: 'json',
+		data: $("#form-review").serialize(),
+		beforeSend: function() {
+			$('#button-review').button('loading');
+		},
+		complete: function() {
+			$('#button-review').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible').remove();
+
+			if (json['error']) {
+				$('#review').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['success']) {
+				$('#review').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+				$('input[name=\'name\']').val('');
+				$('textarea[name=\'text\']').val('');
+				$('input[name=\'rating\']:checked').prop('checked', false);
+			}
+		}
+	});
+});
+
+$(document).ready(function() {
+	$('.thumbnails').magnificPopup({
+		type:'image',
+		delegate: 'a',
+		gallery: {
+			enabled: true
+		}
+	});
+});
+
+$(document).ready(function () {
+  $('.review-links a').on('click', function () {
+    var $review = $('#review');
+    if ($review.length) {
+      $('a[href="#' + $review.closest('.module-item').attr('id') + '"]').trigger('click');
+      $('a[href="#' + $review.closest('.panel-collapse').attr('id') + '"]').trigger('click');
+
+      $([document.documentElement, document.body]).animate({
+        scrollTop: $review.offset().top - 100
+      }, 200);
+    }
+  });
+});
+//--></script>
+{% if not j3.document.isPopup() %}
+{{ j3.loadController('journal3/seo/rich_snippets', breadcrumbs) }}
+{% endif %}
+{{ footer }}

@@ -1,0 +1,17 @@
+{% if references is defined and references is not empty %}
+  <ul>
+    {% for reference in references %}
+      <li style="border:none;background-color:white">{% if reference.link is defined and reference.link is not empty %}<a href="{{ reference.link }}" target="_blank">{{ reference.text }}</a>{% else %}{{ reference.text }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+<script>
+    var count = {{ count.count }};
+        $('.tab-5 a').text(function () {
+        return $(this).text().replace("Citations", "Citations ("+ count +")"); 
+    });
+
+    $('.module-item-5 .panel-heading .panel-title a').text(function () {
+        return $(this).text().replace("Citations", "Citations ("+ count +")"); 
+    });     
+</script>
+{% endif %}

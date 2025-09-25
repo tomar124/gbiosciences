@@ -1,0 +1,41 @@
+<div class="header header-default wrapper">
+  <div class="desktop-logo-wrapper">
+    <div id="logo">
+      {% if j3.settings.get('logo_src') %}
+        <a href="{{ home }}">
+          <img src="{{ j3.settings.get('logo_src') }}" {% if j3.settings.get('logo2x_src') %}srcset="{{ j3.settings.get('logo_src') }} 1x, {{ j3.settings.get('logo2x_src') }} 2x"{% endif %} width="{{ j3.settings.get('logo_width') }}" height="{{ j3.settings.get('logo_height') }}" alt="{{ name }}" title="{{ name }}"/>
+        </a>
+      {% else %}
+        <h1><a href="{{ home }}">{{ name }}</a></h1>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="header-assets">
+    <div class="top-bar navbar-nav">
+      <div class="language-currency top-menu">
+        <div class="desktop-language-wrapper">
+          {{ language }}
+        </div>
+        <div class="desktop-currency-wrapper">
+          {{ currency }}
+        </div>
+      </div>
+      {{ j3.settings.get('desktop_top_menu') }}
+    </div>
+
+    <div class="mid-bar navbar-nav">
+      <div class="desktop-main-menu-wrapper">
+        {{ j3.document.hasClass('mobile-header-active') ? '' : j3.settings.get('desktop_main_menu') }}
+      </div>
+      <div class="header-cart-group">
+        <div class="default-search-wrapper desktop-search-wrapper full-search">
+          {{ search }}
+        </div>
+        <div class="default-cart-wrapper desktop-cart-wrapper">
+          {{ cart }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

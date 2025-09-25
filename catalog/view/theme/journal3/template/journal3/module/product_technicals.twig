@@ -1,0 +1,125 @@
+{% if protocol is defined or sdss is defined or sds is defined or technical is defined or coa is defined %}
+<style>
+    .xl-25{
+        width:25%;
+    }
+    @media only screen and (max-width: 1000px) {
+        .xl-25 {
+            width:25%;
+        }
+    }
+    @media only screen and (max-width: 670px) {
+        .xl-25 {
+            width:50% ;
+        }
+    }
+    @media only screen and (max-width: 450px) {
+        .xl-25 {
+            width:100% ;
+        }
+    }
+    .btn:hover{
+        background-color: transparent !important;
+    }
+</style>
+{% if protocol is defined and protocol is not empty %}    
+<table class="table table-bordered attribute">
+    <thead>
+        <tr>
+            <td colspan="2">Protocol</td>
+        </tr>
+    </thead>
+    <tbody>{% for protocol,link in protocol %}
+        <tr><td>{{ protocol }}</td>
+            <td><a href="{{ server_link }}{{ link }}" target="_blank" data-toggle="tooltip" title="Open PDF"><img src="image/pdf_icon.png" width="20" height="20" /></a></td>
+        </tr>{% endfor %}
+    </tbody>
+</table>
+{% endif %}  
+{% if sdss is defined and sdss is not empty %} 
+<table class="table table-bordered attribute">
+    <thead>
+        <tr>
+          <td colspan="2">Material Safety Data Sheet</td>
+        </tr>
+    </thead>
+    {% for key,links in sdss %}
+        <tr><td>{{ links.language }}</td>
+            <td>
+                <div class="row product-grid technical-pdf-no-margin">
+                    <div class="xs-100 sm-50 md-50 lg-25 xl-25">
+                        <a href="{{ server_link }}{{ links.pdf }}" target="_blank" data-toggle="tooltip" title="Open PDF"><img src="image/pdf_icon.png" width="20" height="20" /></a> <span class="vcenter"></span>
+                    </div>
+                </div>
+            </td></tr>                            
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% if sds is defined and sds is not empty %}
+<table class="table table-bordered attribute">
+    <thead>
+        <tr>
+          <td colspan="2">Material Safety Data Sheet </td>
+        </tr>
+    </thead>
+    {% for key,links in sds %}
+        <tr><td>{{ key }}</td>
+            <td>
+                <div class="row product-grid technical-pdf-no-margin">
+                    {% for link in links %}
+                    <div class="xs-100 sm-50 md-50 lg-25 xl-25">
+                        <a href="{{ server_link }}{{ link.pdf }}" target="_blank" data-toggle="tooltip" title="Open PDF"><img src="image/pdf_icon.png" width="20" height="20" /></a> <span class="vcenter">{{ link.language }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </td></tr>                            
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}   
+{% if technical is defined and technical is not empty %}
+<table class="table table-bordered attribute">
+    <thead>
+        <tr>
+          <td colspan="2">Technical Literature</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tech in technical %}
+                {% if tech is iterable %}
+                    <tr>   
+                        <td><a href="{{ tech.link }}">{{ tech.title }}</a></td>
+                        <td>{{ tech.description }}</td>
+                    </tr>
+                {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% if coa is defined and coa is not empty %}
+<table class="table table-bordered attribute">
+    <thead>
+        <tr>
+          <td colspan="2">Certificate Of Analysis</td>
+        </tr>
+    </thead>
+    <tbody>
+     {% for coa,links in coa %}
+     <tr>
+         <td>{{ coa }}</td>
+         <td>
+            <div class="row product-grid technical-pdf-no-margin">
+            {% for link in links %}
+               <div class="xs-100 sm-50 md-50 lg-25 xl-25">
+                   <a href="{{ server_link }}{{ link.pdf }}" target="_blank" data-toggle="tooltip" title="Open PDF"><img src="image/pdf_icon.png" width="20" height="20" /></a> <span class="vcenter">{{ link.description }}</span>
+               </div>
+            {% endfor %}
+            </div>
+         </td>
+     </tr>
+     {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endif %}

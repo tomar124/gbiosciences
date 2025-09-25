@@ -1,0 +1,62 @@
+<?php return array (
+  0 => 9223372036854775807,
+  1 => 
+  array (
+    0 => 
+    array (
+      '@id' => '/api/waf/ip-rules/1c564abd-4b34-4f12-9ad5-3f989549e23d',
+      '@type' => 'IpRule',
+      'id' => '1c564abd-4b34-4f12-9ad5-3f989549e23d',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.16',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'ipAddress' => '104.234.204.74',
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'createdAt' => '2023-01-10T19:33:12+00:00',
+      'updatedAt' => '2023-01-10T19:33:12+00:00',
+      'note' => 'Added from threats table',
+      'type' => 'block',
+    ),
+    1 => 
+    array (
+      '@id' => '/api/waf/ip-rules/3b01f230-fe80-4f6f-9e27-ecd40c3264f3',
+      '@type' => 'IpRule',
+      'id' => '3b01f230-fe80-4f6f-9e27-ecd40c3264f3',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.16',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'ipAddress' => '24.240.200.86',
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'createdAt' => '2023-01-10T19:22:54+00:00',
+      'updatedAt' => '2023-01-11T17:48:10+00:00',
+      'note' => 'Added from top attacker IP',
+      'type' => 'trust',
+    ),
+  ),
+);

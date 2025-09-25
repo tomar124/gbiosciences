@@ -1,0 +1,104 @@
+<div id="question_modal" class="tmdmodal" role="dialog">
+<div class="modal-dialog">
+	<!-- Modal content-->
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">{{ text_askquestion }} for {{ product_title }}</h4>
+		</div>
+		<div class="modal-body">
+			<form class="form-horizontal">
+
+			<input type="hidden" name="product_id" value="{{ product_id }}" class="form-control" />
+			<input type="hidden" name="customer_email" value="{{ customer_email }}" class="form-control" />
+			<div class="form-group">
+				<div class="col-sm-12">
+				<label class="control-label" for="input-qa_question">{{ text_quest }}</label>
+				</div>
+				<div class="col-sm-12">
+					<textarea name="qa_question" rows="5" id="input-qa_question" class="form-control"></textarea>
+					<div class="help-block">{{ text_note }}</div>
+				</div>
+			</div>
+			{% if captchastatus==1 %}
+			<div class="form-group required">
+				<div class="col-sm-12 captcha q_captcha_error">
+					{{ captcha }}
+				</div>
+			</div>
+			{% endif %}
+			<button type="button" id="button-qa" data-loading-text="{{ text_loading }}" class="btn btn-primary">{{ button_continue }}</button>
+		  </form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript"><!--
+jQuery('.openall').click(function() {
+	jQuery('a[data-parent="#accordion"]').trigger('click');
+
+	if($(this).html()=='<i class="fa fa-plus"></i>') {
+		  $(this).html('<i class="fa fa-minus"></i>');
+	} else {
+		  $(this).html('<i class="fa fa-plus"></i>');
+	}
+})
+
+$('.collapse').on('shown.bs.collapse', function(){
+$(this).parent().find(".fa-chevron-right").removeClass("fa-chevron-right").addClass("fa-chevron-down");
+}).on('hidden.bs.collapse', function(){
+$(this).parent().find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-right");
+});
+
+$('#button-qa').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=extension/tmdquestionans/askquestion&product_id={{ product_id }}',
+		type: 'post',
+		dataType: 'json',
+		data: $('#question_modal input[type=\'text\'], #question_modal input[type=\'hidden\'], #question_modal textarea'),
+		beforeSend: function() {
+			$('#button-qa').button('loading');
+		},
+		complete: function() {
+			$('#button-qa').button('reset');
+		},
+		success: function(json) {
+			$('.alert-success, .alert-danger, .text-danger').remove();
+
+			if (json['error']) {
+				$('#input-qa_question').after('<div class="text-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+			if (json['captchaerror']) {
+					$('.q_captcha_error').after('<div class="text-danger col-sm-12">' + json['captchaerror'] + '</div>');
+				}
+
+			if (json['success']) {
+				$('.modal-body').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+				$('textarea[name=\'qa_question\']').val('');
+				window.location.reload();
+			}
+		}
+	});
+});
+//--></script>
+
+<style type="text/css">
+.btn-ask, .btn-ask:hover, .site-wrapper .btn-ask{
+	border-radius: 0px; 
+	border-color:{{ askbtnbg }}!important;
+	background:{{ askbtnbg }}!important;
+	color:{{ askbtncolor }}!important;
+}
+.tmdmodal .modal-header,#tab-questionanswer .btn-primary, .tmdmodal .btn-primary{
+	border-color:{{ btnbg }}!important;
+	background:{{ btnbg }}!important;
+	color:{{ btncolor }}!important;
+	border-radius: 0px;
+}
+.tmdmodal .modal-header .close,.tmdmodal .modal-header .modal-title{color:{{ btncolor }}!important;font-weight:bold;opacity: 1;}
+#tab-questionanswer .panel-heading{background-color:{{ qsbg }}!important;border-color:{{ qsbg }}!important;}
+#tab-questionanswer .panel-heading a,#tab-questionanswer span b{color:{{ qscolor }}!important;}
+#tab-questionanswer .text-success{color:{{ btnbg }}!important;}
+#tab-questionanswer .panel-body{background-color:{{ ansbg }}!important;color:{{ anscolor }}!important;}
+#tab-questionanswer .panel-title .fa{background-color:{{ btnbg }}!important;color:{{ btncolor }}!important;border-radius: 50%;}
+</style>

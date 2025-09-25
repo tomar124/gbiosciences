@@ -1,0 +1,15 @@
+  <!-- comment detail -->
+  {% if comment %}
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; margin-bottom: 20px; color: #25616f;">
+    <thead>
+      <tr>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; background-color: #F4F4F4; font-weight: bold; text-align: left; padding: 7px;">{{ text_instruction }}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: left; padding: 7px;">{{ comment }}</td>
+      </tr>
+    </tbody>
+  </table>
+  {% endif %}

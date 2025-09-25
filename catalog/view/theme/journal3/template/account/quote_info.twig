@@ -1,0 +1,153 @@
+{{ header }}
+<div id="container" class="container j-container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  {% if success %}
+  <div class="alert alert-success success"><i class="fa fa-check-circle"></i>{{ success }}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  {% endif %}
+  {% if error_warning %}
+    <div class="alert alert-danger warning"><i class="fa fa-exclamation-circle"></i>{{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  {% endif %}
+  <div class="row">{{ column_left }}{{ column_right }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">
+      <h1 class="title page-title">{{ heading_title }}</h1>
+      {{ content_top }}
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td class="text-left" colspan="3">{{ text_quote_detail }}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left" ><b>{{ text_quote_id }}</b> #{{ quote_id }}<br /></td>
+            <td><b>{{ text_date_added }}</b>{{ date_added }}<br /></td>
+            <td class="text-left"><b>{{ column_status }}:</b>    {{ status }}</td> </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td>Catalog</td>
+              <td>Product</td>
+              <td class="text-center">Requested Qty</td>
+              {% if quote_status == 1 %}
+                <td class="text-center">Qty (>= Requested Qty)</td>
+              {% endif %}
+              <td class="text-center">{{ column_original_price }}</td>
+              <td class="text-center">{{ column_price }}</td>
+              {% if products %}
+                {% if quote_status == 1 %} <td></td>{% endif %}
+              {% endif %}
+            </tr>
+          </thead>
+            <tbody>
+              {% for index,product in products %}
+              <tr id="product-{{ product.product_id }}-{{ index }}">
+                <input type="hidden" value="{{ product.product_id }}" name="quote_product_id" />
+                {% for option in product.option %}
+                  <input type="hidden" value="{{ option.product_option_value_id }}" name="option[{{ option.product_option_id }}]" />
+                {% endfor %}
+                <td>{{ product.name }}</td>
+                <td>{{ product.model }}</td>
+                <td class="text-center">{{ product.quantity }}</td>
+                {% if quote_status == 1 %}
+                <td class="text-center">
+                  <div class="stepper">
+                    <input type="text" name="quantity_entered" value="{{ product.quantity }}" size="1" class="form-control" />
+                    <span>
+                      <i class="fa fa-angle-up"></i>
+                      <i class="fa fa-angle-down"></i>
+                    </span>
+                  </div>
+                </td>
+                {% endif %}
+                <td class="text-center">{{ product.original_price }}</td>
+                <td class="text-center">{{ product.price }}</td>
+                {% if quote_status == 1 %}
+                <td class="text-right" style="white-space: nowrap;">
+                    <button id="button-{{ product.product_id }}-{{ index }}" onClick="addQuoteProductToCart('product-{{ product.product_id }}-{{ index }}', 'button-{{ product.product_id }}-{{ index }}')" class="btn btn-primary"/><i class="fa fa-shopping-cart"></i></button>
+                </td>  
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+      </div>
+      {% if comment %}
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr><td class="text-left">{{ text_comment }}</td></tr>
+          </thead>
+          <tbody>
+            <tr><td class="text-left">{{ comment }}</td></tr>
+          </tbody>
+        </table>
+      {% endif %}     
+      <div class="buttons">
+        <div class="pull-left"><a href="{{ back }}" class="btn btn-default button">{{ button_back }}</a></div>
+      </div>
+      {{ content_bottom }}</div>
+  </div>
+</div>
+<script type="text/javascript"><!--
+function addQuoteProductToCart(product_id, button) {
+	$.ajax({
+		url: 'index.php?route=account/quote/requote&quote_id={{ quote_id }}',
+		type: 'post',
+                data: $('#' + product_id + ' input[type=\'text\'], #' + product_id + ' input[type=\'hidden\'], #' + product_id + ' input[type=\'radio\']:checked, #' + product_id + ' input[type=\'checkbox\']:checked, #' + product_id + ' select, #' + product_id + ' textarea').serializeArray(),
+		dataType: 'json',
+		beforeSend: function () {
+                    $('#button-cart').button('loading');
+                },
+                complete: function () {
+                  $('#button-cart').button('reset');
+                },
+                success: function (json) {
+                    $('.alert').remove();
+
+                    if (json['error']) {
+                            parent.$('#content').parent().before('<div class="alert alert-danger"><i class="fa fa-check-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                    if (json['success']) {
+                            if (json['notification']) {
+                                    parent.show_notification(json['notification']);
+                            } else {
+                                    parent.$('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                            }
+
+                            parent.$('#cart-total').html(json['total']);
+                            parent.$('#cart-items').html(json['items_count']);
+
+                            if (Journal['scrollToTop']) {
+                                    parent.$('html, body').animate({ scrollTop: 0 }, 'slow');
+                            }
+
+                            parent.$('.cart-content ul').load('index.php?route=common/cart/info ul li');
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+	});
+}
+//--></script>
+{{ footer }}

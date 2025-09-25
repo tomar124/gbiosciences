@@ -1,0 +1,63 @@
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td class="text-left">{{ column_url }}</td>
+        <td class="text-left">{{ column_added_on }}</td>
+        <td class="text-center">{{ column_action }}</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% if customs %}
+      {% for custom in customs %}
+      <tr>
+        <td class="text-left">{{ custom.url }}</td>
+        <td class="text-left">{{ custom.added_on }}</td>
+        <td class="text-center"><button id="button-remove-custom-{{ custom.google_sitemap_pro_custom_url_id }}" onclick="removeCustomLink('{{ custom.google_sitemap_pro_custom_url_id }}');" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <tr>
+        <td class="text-center" colspan="3">{{ text_no_results }}</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+<div class="row">
+  <div class="col-sm-6 text-left">{{ pagination }}</div>
+  <div class="col-sm-6 text-right">{{ results }}</div>
+</div>
+<script type="text/javascript"><!--
+function removeCustomLink(google_sitemap_pro_custom_url_id) {
+    $.ajax({
+      url: 'index.php?route=extension/feed/google_sitemap_pro/deleteCustom&user_token={{ user_token }}&google_sitemap_pro_custom_url_id=' + google_sitemap_pro_custom_url_id,
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function() {
+        $('#button-remove-custom-' + google_sitemap_pro_custom_url_id).button('loading');
+      },
+      complete: function() {
+        $('#button-remove-custom-' + google_sitemap_pro_custom_url_id).parent().button('reset');
+      },
+      success: function(json) {
+        $('.alert-dismissible').remove();
+
+        if (json['error']) {
+           $('#tab-custom').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+        }
+
+        if (json['success']) {
+          $('#tab-custom').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+          $('#custom').load('index.php?route=extension/feed/google_sitemap_pro/custom&user_token={{ user_token }}');
+
+          $('#tab-custom input[name=\'url\']').val('');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  }
+  //--></script> 

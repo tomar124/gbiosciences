@@ -1,0 +1,32 @@
+<?php $val = array (
+  'css' => '.module-title-313{font-size:24px;padding-bottom:20px}.module-title-313
+.subtitle{display:inline-block}.module-title-313 .title-divider{display:none;max-width:50px;height:5px;margin-top:10px;margin-bottom:10px;margin-left:auto;margin-right:auto}.module-title-313 .title-wrapper{text-align:center}.module-title-313
+h3{font-size:24px;color:rgba(44, 105, 120, 1)}.module-title-313 .title-wrapper::before{opacity:.05;display:block}',
+  'fonts' => 
+  array (
+  ),
+  'settings' => 
+  array (
+    'schedule' => 
+    array (
+      'from' => '',
+      'to' => '',
+      'between' => true,
+    ),
+    'type' => 'custom',
+    'title' => 'HANDBOOKS & LITERATURE',
+    'subtitle' => '',
+    'status' => true,
+    'id' => 'title-68d540de73e3a',
+    'module_id' => 313,
+    'classes' => 
+    array (
+      0 => 'module',
+      1 => 'module-title',
+      2 => 'module-title-313',
+    ),
+    'items' => 
+    array (
+    ),
+  ),
+);

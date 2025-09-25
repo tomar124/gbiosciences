@@ -1,0 +1,467 @@
+<?php return array (
+  0 => 9223372036854775807,
+  1 => 
+  array (
+    0 => 
+    array (
+      '@id' => '/api/waf/boosters/054161c7-bb7e-4f91-a610-21c743877caa',
+      '@type' => 'Booster',
+      'id' => '054161c7-bb7e-4f91-a610-21c743877caa',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.16',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'name' => 'Disable in WordPress admin area',
+      'status' => true,
+      'createdAt' => '2023-01-10T11:19:11+00:00',
+      'updatedAt' => '2023-01-10T11:19:11+00:00',
+      'jsonTreeFormat' => 
+      array (
+        'id' => '99a9b8a8-0123-4456-b89a-b183e5e95fee',
+        'type' => 'group',
+        'children1' => 
+        array (
+          'ba99abab-cdef-4012-b456-7183e5e95fee' => 
+          array (
+            'type' => 'rule',
+            'properties' => 
+            array (
+              'field' => 'request.uri',
+              'value' => 
+              array (
+                0 => '/wp-admin/',
+              ),
+              'operator' => 'like',
+              'valueSrc' => 
+              array (
+                0 => 'value',
+              ),
+              'valueType' => 
+              array (
+                0 => 'text',
+              ),
+            ),
+          ),
+        ),
+        'properties' => 
+        array (
+          'not' => false,
+          'conjunction' => 'AND',
+        ),
+      ),
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'action' => 'trust',
+      'jsonLogicFormat' => 
+      array (
+        'data' => 
+        array (
+          'request' => 
+          array (
+            'uri' => NULL,
+          ),
+        ),
+        'logic' => 
+        array (
+          'and' => 
+          array (
+            0 => 
+            array (
+              'in' => 
+              array (
+                0 => '/wp-admin/',
+                1 => 
+                array (
+                  'var' => 'request.uri',
+                ),
+              ),
+            ),
+          ),
+        ),
+        'errors' => 
+        array (
+        ),
+      ),
+      'priority' => 10,
+      'type' => 'pre_installed',
+    ),
+    1 => 
+    array (
+      '@id' => '/api/waf/boosters/784b7733-95c9-4f55-928d-2a0e37454333',
+      '@type' => 'Booster',
+      'id' => '784b7733-95c9-4f55-928d-2a0e37454333',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.16',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'name' => 'Disable in Admin area',
+      'status' => true,
+      'createdAt' => '2023-01-10T11:19:11+00:00',
+      'updatedAt' => '2023-01-10T11:19:11+00:00',
+      'jsonTreeFormat' => 
+      array (
+        'id' => '99a9b8a8-0123-4456-b89a-b183e5e95fee',
+        'type' => 'group',
+        'children1' => 
+        array (
+          'ba99abab-cdef-4012-b456-7183e5e95fee' => 
+          array (
+            'type' => 'rule',
+            'properties' => 
+            array (
+              'field' => 'request.uri',
+              'value' => 
+              array (
+                0 => '/admin/',
+              ),
+              'operator' => 'like',
+              'valueSrc' => 
+              array (
+                0 => 'value',
+              ),
+              'valueType' => 
+              array (
+                0 => 'text',
+              ),
+            ),
+          ),
+        ),
+        'properties' => 
+        array (
+          'not' => false,
+          'conjunction' => 'AND',
+        ),
+      ),
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'action' => 'trust',
+      'jsonLogicFormat' => 
+      array (
+        'data' => 
+        array (
+          'request' => 
+          array (
+            'uri' => NULL,
+          ),
+        ),
+        'logic' => 
+        array (
+          'and' => 
+          array (
+            0 => 
+            array (
+              'in' => 
+              array (
+                0 => '/admin/',
+                1 => 
+                array (
+                  'var' => 'request.uri',
+                ),
+              ),
+            ),
+          ),
+        ),
+        'errors' => 
+        array (
+        ),
+      ),
+      'priority' => 10,
+      'type' => 'pre_installed',
+    ),
+    2 => 
+    array (
+      '@id' => '/api/waf/boosters/7ee228ed-9ccc-4f48-85f7-1849878ecf8c',
+      '@type' => 'Booster',
+      'id' => '7ee228ed-9ccc-4f48-85f7-1849878ecf8c',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.16',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'name' => 'Block country United States of America',
+      'status' => true,
+      'createdAt' => '2023-01-10T19:43:09+00:00',
+      'updatedAt' => '2023-01-10T19:43:09+00:00',
+      'jsonTreeFormat' => 
+      array (
+        'id' => '8b9a8a9b-4567-489a-bcde-f1859d353e96',
+        'type' => 'group',
+        'children1' => 
+        array (
+          '98aa9a9a-0123-4456-b89a-b1859d353e96' => 
+          array (
+            'type' => 'rule',
+            'properties' => 
+            array (
+              'field' => 'ip.country',
+              'value' => 
+              array (
+                0 => 'US',
+              ),
+              'operator' => 'select_equals',
+              'valueSrc' => 
+              array (
+                0 => 'value',
+              ),
+              'valueType' => 
+              array (
+                0 => 'select',
+              ),
+            ),
+          ),
+        ),
+        'properties' => 
+        array (
+          'not' => false,
+          'conjunction' => 'AND',
+        ),
+      ),
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'action' => 'block',
+      'jsonLogicFormat' => 
+      array (
+        'data' => 
+        array (
+          'ip' => 
+          array (
+            'country' => NULL,
+          ),
+        ),
+        'rule' => 
+        array (
+          'and' => 
+          array (
+            0 => 
+            array (
+              '==' => 
+              array (
+                0 => 
+                array (
+                  'var' => 'ip.country',
+                ),
+                1 => 'US',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'priority' => 10,
+      'type' => 'country',
+    ),
+    3 => 
+    array (
+      '@id' => '/api/waf/boosters/abb1b6e7-a3ff-4fc1-a0dd-43d57ea84034',
+      '@type' => 'Booster',
+      'id' => 'abb1b6e7-a3ff-4fc1-a0dd-43d57ea84034',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.16',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'name' => 'Trust URL https://www.gbiosciences.com',
+      'status' => true,
+      'createdAt' => '2023-01-10T19:36:50+00:00',
+      'updatedAt' => '2023-01-10T19:36:50+00:00',
+      'jsonTreeFormat' => 
+      array (
+        'id' => '8a999b99-cdef-4012-b456-71859d2f7504',
+        'type' => 'group',
+        'children1' => 
+        array (
+          'ba89bbaa-89ab-4cde-b012-31859d2f7504' => 
+          array (
+            'type' => 'rule',
+            'properties' => 
+            array (
+              'field' => 'request.uriPath',
+              'value' => 
+              array (
+                0 => '/index.php',
+              ),
+              'operator' => 'equal',
+              'valueSrc' => 
+              array (
+                0 => 'value',
+              ),
+              'valueType' => 
+              array (
+                0 => 'text',
+              ),
+            ),
+          ),
+        ),
+        'properties' => 
+        array (
+          'not' => false,
+          'conjunction' => 'AND',
+        ),
+      ),
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'action' => 'trust',
+      'jsonLogicFormat' => 
+      array (
+        'data' => 
+        array (
+          'request' => 
+          array (
+            'uriPath' => NULL,
+          ),
+        ),
+        'rule' => 
+        array (
+          'and' => 
+          array (
+            0 => 
+            array (
+              '==' => 
+              array (
+                0 => 
+                array (
+                  'var' => 'request.uriPath',
+                ),
+                1 => '/index.php',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'priority' => 10,
+      'type' => 'url',
+    ),
+    4 => 
+    array (
+      '@id' => '/api/waf/boosters/dbb49b18-6c82-4fc6-88dc-a927f8780a78',
+      '@type' => 'Booster',
+      'id' => 'dbb49b18-6c82-4fc6-88dc-a927f8780a78',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.16',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'name' => 'Block country United States of America',
+      'status' => true,
+      'createdAt' => '2023-01-10T19:38:25+00:00',
+      'updatedAt' => '2023-01-10T19:38:25+00:00',
+      'jsonTreeFormat' => 
+      array (
+        'id' => 'baa89899-4567-489a-bcde-f1859d30e859',
+        'type' => 'group',
+        'children1' => 
+        array (
+          'b899a98b-0123-4456-b89a-b1859d30e859' => 
+          array (
+            'type' => 'rule',
+            'properties' => 
+            array (
+              'field' => 'ip.country',
+              'value' => 
+              array (
+                0 => 'US',
+              ),
+              'operator' => 'select_equals',
+              'valueSrc' => 
+              array (
+                0 => 'value',
+              ),
+              'valueType' => 
+              array (
+                0 => 'select',
+              ),
+            ),
+          ),
+        ),
+        'properties' => 
+        array (
+          'not' => false,
+          'conjunction' => 'AND',
+        ),
+      ),
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'action' => 'block',
+      'jsonLogicFormat' => 
+      array (
+        'data' => 
+        array (
+          'ip' => 
+          array (
+            'country' => NULL,
+          ),
+        ),
+        'rule' => 
+        array (
+          'and' => 
+          array (
+            0 => 
+            array (
+              '==' => 
+              array (
+                0 => 
+                array (
+                  'var' => 'ip.country',
+                ),
+                1 => 'US',
+              ),
+            ),
+          ),
+        ),
+      ),
+      'priority' => 10,
+      'type' => 'country',
+    ),
+  ),
+);

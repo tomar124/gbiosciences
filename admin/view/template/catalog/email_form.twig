@@ -1,0 +1,153 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-email" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>{{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i>{{ text_form }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-email" class="form-horizontal">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+            <li><a href="#tab-info" data-toggle="tab">Info</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active in" id="tab-general">              
+              <div class="tab-content">
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" value="{{ name is defined ? name : '' }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+                      {% if error_name %}
+                      <div class="text-danger">{{ error_name }}</div>
+                      {% endif %}
+                    </div>
+                  </div>              
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-subject-title">{{ entry_subject_title }}</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="email_subject" value="{{ email_subject is defined ? email_subject : '' }}" placeholder="{{ entry_subject_title }}" id="input-subject-title" class="form-control" />
+                      {% if error_subject_title %}
+                      <div class="text-danger">{{ error_subject_title }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-description">{{ entry_description }}</label>
+                    <div class="col-sm-10">
+                    <textarea name="description" placeholder="{{ entry_description }}" id="input-description" class="form-control">{{ description is defined ? description : '' }}</textarea>
+                    </div>
+                  </div>                  
+                 <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                    <div class="col-sm-10">
+                      <select name="status" id="input-status" class="form-control">
+                        {% if status %}
+                        <option value="1" selected="selected">{{ text_enabled }}</option>
+                        <option value="0">{{ text_disabled }}</option>
+                        {% else %}
+                        <option value="1">{{ text_enabled }}</option>
+                        <option value="0" selected="selected">{{ text_disabled }}</option>
+                        {% endif %}
+                      </select>
+                    </div>
+                  </div>                
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-info">              
+              <div class="tab-content">
+                  <div class="table-responsive">
+                      <table class="table table-bordered list">
+                          <tr><td>[FIRST-NAME]</td><td>User First Name</td></tr>
+                          <tr><td>[LAST-NAME]</td><td>User Last Name</td></tr>
+                          <tr><td>[USER-LOGIN-EMAIL]</td><td>User Email</td></tr>
+                          <tr><td>[USER-LOGIN-PASSWORD]</td><td>User Password</td></tr>
+                          <tr><td>[USER-LOGIN-URL]</td><td>User account login url</td></tr>
+                          <tr><td>[ORDER-INFO-URL]</td><td>Order info link</td></tr>
+                          <tr><td>[ORDER-DETAIL-SECTION]</td><td>Order detail info like order number, payment method, shipping method, order status, email, telephone and date</td></tr>
+                          <tr><td>[ORDER-ADDRESS-SECTION]</td><td>Order payment and shipping address</td></tr>
+                          <tr><td>[ORDER-CART-SECTION]</td><td>Order cart details</td></tr>
+                          <tr><td>[ORDER-COMMENT-SECTION]</td><td>Order comment if any</td></tr>
+                          
+                          <tr><td>[USER-GROUP]</td><td>Customer user Group</td></tr>
+                          <tr><td>[EMAIL]</td><td>Customer Email</td></tr>
+                          <tr><td>[TELEPHONE]</td><td>Customer Telephone</td></tr>
+                          <tr><td>[ORDER-ID]</td><td>Order ID</td></tr>
+                          <tr><td>[ORDER-DATE-TIME]</td><td>Order Date Time</td></tr>
+                          <tr><td>[ORDER-STATUS]</td><td>Order Statusk</td></tr>
+                          <tr><td>[ORDER-UPDATE-COMMENT]</td><td>Update Order Comment Added by Admin</td></tr>
+                          <tr><td>[RETURN-ID]</td><td>Order Return ID</td></tr>
+                          <tr><td>[RETURN-DATE]</td><td>Order Return Date</td></tr>
+                          <tr><td>[RETURN-STATUS]</td><td>Order Return Status</td></tr>
+                          <tr><td>[RETURN-COMMENT]</td><td>Order Return Comment</td></tr>
+                          <tr><td>[Quote-ID]</td><td>Quest request ID</td></tr>
+                          <tr><td>[COUNRTY]</td><td>Customer Country</td></tr>
+                          <tr><td>[ENQUIRY]</td><td>Customer Enquiry Message From Contact Us Page</td></tr>
+                          <tr><td>[GIFT-CARD-AMOUNT]</td><td>Gift Card/Voucher amount</td></tr>
+                          <tr><td>[GIFT-CARD-CODE]</td><td>Gift Card/Voucher Code</td></tr>
+                          <tr><td>[GIFT-CARD-IMAGE]</td><td>Gifet Card/Voucher Theme Image</td></tr>
+                          <tr><td>[REWARD-POINTS]</td><td>Reward Points Received/Deducted</td></tr>
+                          <tr><td>[TOTAL-REWARD-POINTS]</td><td>Total Reward Points of Customer</td></tr>
+                          <tr><td>[CREDIT-POINTS]</td><td>Store Credit Points Received/Deducted</td></tr>
+                          <tr><td>[TOTAL-CREDIT-POINTS]</td><td>Total Store Credit Points Of Customer</td></tr>                          
+                      </table>
+                  </div>                
+              </div>
+            </div>
+          </div>
+        </form>          
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
+  <script type="text/javascript"><!--
+CKEDITOR.replace('input-description');
+CKEDITOR.on('dialogDefinition', function (event)
+        {
+            var editor = event.editor;
+            var dialogDefinition = event.data.definition;
+            var dialogName = event.data.name;
+
+            var tabCount = dialogDefinition.contents.length;
+            for (var i = 0; i < tabCount; i++) {
+                var browseButton = dialogDefinition.contents[i].get('browse');
+
+                if (browseButton !== null) {
+                    browseButton.hidden = false;
+                    browseButton.onClick = function() {
+						$('#modal-image').remove();
+						$.ajax({
+							url: 'index.php?route=common/filemanager&user_token={{ user_token }}&ckedialog='+this.filebrowser.target,
+							dataType: 'html',
+							success: function(html) {
+								$('body').append('<div id="modal-image" style="z-index: 10020;" class="modal">' + html + '</div>');
+								$('#modal-image').modal('show');
+							}
+						});	
+					}
+                }
+            }
+        });
+
+$('#input-description').attr({height: 300});
+//--></script> 
+  </div>
+{{ footer }}

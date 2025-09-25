@@ -1,0 +1,32 @@
+<?php $val = array (
+  'css' => '.module-title-314{font-size:24px;padding-bottom:20px}.module-title-314
+.subtitle{display:inline-block}.module-title-314 .title-divider{display:none;max-width:50px;height:5px;margin-top:10px;margin-bottom:10px;margin-left:auto;margin-right:auto}.module-title-314 .title-wrapper{text-align:center}.module-title-314
+h3{font-size:24px;color:rgba(44, 105, 120, 1)}.module-title-314 .title-wrapper::before{opacity:.05;display:block}',
+  'fonts' => 
+  array (
+  ),
+  'settings' => 
+  array (
+    'schedule' => 
+    array (
+      'from' => '',
+      'to' => '',
+      'between' => true,
+    ),
+    'type' => 'custom',
+    'title' => 'PROTEIN MAN\'S BLOG',
+    'subtitle' => '',
+    'status' => true,
+    'id' => 'title-68d540df6199c',
+    'module_id' => 314,
+    'classes' => 
+    array (
+      0 => 'module',
+      1 => 'module-title',
+      2 => 'module-title-314',
+    ),
+    'items' => 
+    array (
+    ),
+  ),
+);

@@ -1,0 +1,188 @@
+{{ header }}
+<ul class="breadcrumb">
+  {% for breadcrumb in breadcrumbs %}
+  <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+  {% endfor %}
+</ul>
+<div id="account-wishlist" class="container">
+    {% if error_warning %}
+    <div class="alert alert-danger warning"><i class="fa fa-exclamation-circle"></i>{{ error_warning }}</div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success success"><i class="fa fa-check-circle"></i>{{ success }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="row">{{ column_left }}{{ column_right }}
+        {% if column_left and column_right %}
+        {% set class = 'col-sm-6' %}
+        {% elseif column_left or column_right %}
+        {% set class = 'col-sm-9' %}
+        {% else %}
+        {% set class = 'col-sm-12' %}
+        {% endif %}
+        <div id="content" class="{{ class }}">
+            <h1 class="title page-title">{{ heading_title }}</h1>
+            {{ content_top }}
+            <p class="account-text">{{ text_quote_list }}</p>
+            {% if products %}
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td class="text-left td-name">{{ column_name }}</td>
+                            <td class="text-left td-model">{{ column_model }}</td>
+                            <td class="text-left td-qty">Quantity{#{{ column_quantity }}#}</td>
+                            <td class="text-right td-price">{{ column_price }}</td>
+                            <td class="text-center td-action"> Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <form action="{{ action_quotes }}" method="post" enctype="multipart/form-data">
+                            <tr>
+                                <td class="text-left td-name"><a href="{{ product.href }}">{{ product.name }}</a></td>
+                                <td class="text-left td-model">{{ product.model }}</td>
+                                <td class="text-left td-qty">
+                                  <input type="hidden" name="option" value='{{ product.options }}' />
+                                  <input type="hidden" name="product_name" value="{{ product.product_id }}"/>
+                                  <div class="input-group btn-block">
+                                    <div class="stepper">
+                                      <input type="text" name="quantity" value="{{ product.quantity }}" size="1" class="form-control" />
+                                      <span>
+                                        <i class="fa fa-angle-up"></i>
+                                        <i class="fa fa-angle-down"></i>
+                                      </span>
+                                    </div>
+                                    <span class="input-group-btn">
+                                      <button type="submit" data-toggle="tooltip" title="{{ button_update }}" class="btn btn-update"><i class="fa fa-refresh"></i></button>
+                                    </span>
+                                  </div>
+                                </td>
+                                <td class="text-right td-price">{{ product.price }}</td>
+                                <td class="text-center td-action">
+                                    <?php /* ?><!-- <button type="button" onclick="cart.add('{{ product.product_id }}');" data-toggle="tooltip" title="{{ button_cart }}" class="btn btn-primary" data-loading-text="<i class='fa fa-shopping-cart'></i>"><i class="fa fa-shopping-cart"></i></button> --><?php */ ?>
+                                    <a href='{{ product.remove }}' data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger btn-remove"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        </form>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            <p></p>
+            <p></p>
+            <h5>{{ text_your_details }}</h5>
+            <form action method="post" enctype="multipart/form-data" class="form-horizontal">
+                <fieldset id="account">
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+                        <div class="col-sm-10">
+                            <input data-validation="required" type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+                            {% if error_name %}
+                                <div class="text-danger">{{ error_name }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-email">{{ entry_email }}</label>
+                        <div class="col-sm-10">
+                            <input data-validation="required email" type="email" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
+                            {% if error_email %}
+                                <div class="text-danger">{{ error_email }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-telephone">{{ entry_telephone }}</label>
+                        <div class="col-sm-10">
+                            <input data-validation="required" type="tel" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}" id="input-telephone" class="form-control" />
+                            {% if error_telephone %}
+                                <div class="text-danger">{{ error_telephone }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-company">{{ entry_company }}</label>
+                        <div class="col-sm-10">
+                            <input data-validation="required" type="text" name="company" value="{{ company }}" placeholder="{{ entry_company }}" id="input-company" class="form-control" />
+                            {% if error_company %}
+                                <div class="text-danger">{{ error_company }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-comment">{{ entry_comment }}</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" name="comment" value="{{ comment }}" placeholder="{{ entry_comment }}" id="input-comment" class="form-control" style="resize: vertical;"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-country">{{ entry_country }}</label>
+                        <div class="col-sm-10">
+                            <select data-validation="length" data-validation-length="min1" name="country_id" id="input-country" class="form-control">
+                                <option value="">{{ text_select }}</option>
+                                {% for country in countries %}
+                                {% if country.country_id == country_id %}
+                                <option value="{{ country.country_id }}" selected="selected">{{ country.name }}</option>
+                                {% else %}
+                                <option value="{{ country.country_id }}">{{ country.name }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                            {% if error_country %}
+                                <div class="text-danger">{{ error_country }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </fieldset>
+                <br/>
+                <div class="buttons">
+                    <a href="{{ back }}" class="btn btn-primary button" class="btn btn-primary button" >{{ button_back }}</a>
+                    <div class="pull-right">
+                        <input type="submit" value="{{ button_submit }}" class="btn btn-primary button" />
+                    </div>
+                </div>
+            </form>
+            {% else %}
+            <h3>{{ text_empty }}</h3>
+            {% endif %}
+            {{ content_bottom }}</div>
+    </div>
+</div>
+<script>
+    $.validate();
+</script>
+<script>
+//$("#btn-ab-remove").click(function () {
+    function removefromquote(key) {
+        //var key = $(this).attr('data-product-key');
+        var key = key;
+
+        $.ajax({
+            url: 'index.php?route=account/addtoquote/remove',
+            type: 'post',
+            data: 'key=' + key,
+            dataType: 'json',
+            beforeSend: function () {
+                $('#wishlist > button > a > span').button('loading');
+            },
+            complete: function () {
+                $('#wishlist > button > a > span').button('reset');
+
+                location.reload();
+            },
+            success: function (json) {
+                setTimeout(function () {
+                    $('#wishlist-total').html(json['total']);
+                }, 100);
+
+                if (getURLVar('route') == 'account/addtoquote' || getURLVar('route') == 'account/addtoquote') {
+                    location = 'index.php?route=account/addtoquote';
+                } else {
+                    $('#wishlist ul').load('index.php?route=account/addtoquote');
+                }
+            }
+        });
+    }
+    //});
+</script>
+{{ footer }}

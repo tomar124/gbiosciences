@@ -1,0 +1,227 @@
+<div class="header header-classic header-lg">
+  <div class="top-bar navbar-nav">
+    {{ j3.settings.get('desktop_top_menu') }}
+    {% if j3.settings.get('langPosition') == 'top' %}
+      <div class="language-currency top-menu">
+        <div class="desktop-language-wrapper">
+          {{ language }}
+        </div>
+        <div class="desktop-currency-wrapper">
+          {{ currency }}
+        </div>
+      </div>
+    {% endif %}
+    <div class="third-menu">{{ j3.settings.get('desktop_top_menu_3') }}</div>
+    {% if j3.settings.get('secondaryMenuPosition') == 'top' %}
+      <div class="top-menu secondary-menu">{{ j3.settings.get('desktop_top_menu_2') }}</div>
+    {% endif %}
+  </div>
+  <div class="mid-bar navbar-nav">
+    <div class="desktop-logo-wrapper">
+      <div id="logo">
+        {% if j3.settings.get('logo_src') %}
+          <a href="{{ home }}">
+            <img src="{{ j3.settings.get('logo_src') }}" {% if j3.settings.get('logo2x_src') %}srcset="{{ j3.settings.get('logo_src') }} 1x, {{ j3.settings.get('logo2x_src') }} 2x"{% endif %} width="{{ j3.settings.get('logo_width') }}" height="{{ j3.settings.get('logo_height') }}" alt="{{ name }}" title="{{ name }}"/>
+          </a>
+        {% else %}
+          <h1><a href="{{ home }}">{{ name }}</a></h1>
+        {% endif %}
+      </div>
+    </div>
+    {% if j3.settings.get('headerMainMenu2Position') == 'top' %}
+      
+            <div style="padding-right: 10px; width: 100%;">
+                <script>
+                  (function() {
+                    var cx = '{{ search_key }}';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                  })();
+                </script>
+                <gcse:searchbox-only resultsUrl="index.php?route=common/search/googlesearch"></gcse:searchbox-only>
+                <style>
+                    .gsc-clear-button {
+                        display: none;
+                    }
+                    .gsib_b {
+                        padding: 0px;
+                    }
+                    .gsc-search-box {
+                        border-style:none !important;
+                    }
+                    .gsc-control-searchbox-only.gsc-control-searchbox-only-en {
+                        width: 300px;
+                    }
+                    td.gsc-input {
+                        padding: 0px 0
+                    }
+                    td.gsc-search-button {
+                        margin-left: 0px ;
+                        padding: 0px;
+                    }
+                    td.gsc-search-button > button {
+                        padding: 10px 10px 9px 10px;
+                        margin-left: 0px;
+                        border: none;
+                        border-radius: 0px;
+                        background-color: #9B172C;
+                    }
+                    td.gsc-search-button > button:hover {
+                        background-color: #9B172C;
+                    }
+                    table.gsc-search-box td.gsc-input, table.gsc-search-box td.gsc-input {
+                        padding-right: 0px;
+                    }
+                    .gsc-search-button-v2 {
+                        margin-top: 0px;
+                    }
+                    table.gsc-search-box > tbody > tr {
+                        border: 2px solid #9B172C;
+                    }
+                    /*td.gsc-input > div > table {
+                        border-width: 2px !important;
+                        border-color: none !important;
+                    }*/
+                    .gsc-input-box {
+                        border-color: #9B172C;
+                    }
+                    .gsc-input-box input::placeholder {
+                        color: #9B172C;
+                        font-weight: bold;
+                    }
+                </style>
+                <script>
+                $(document).ready(function() {
+                    setInterval( function() 
+                    {
+                        $("#gsc-i-id1").css("background","none");
+                        $("#gsc-i-id1").parent().css("padding-left","4px");
+                        $("#gsc-i-id1").parent().css("padding-right","0");
+                        $("#gsc-i-id1").parent().css("padding-top","0");
+                        $("#gsc-i-id1").css("text-indent","0");
+                        $("#gsc-i-id1").attr("placeholder","Search G-Biosciences");
+                    },10/*Time*/);
+                });
+                </script>
+            </div>
+            
+    {% endif %}
+    <div class="desktop-search-wrapper full-search default-search-wrapper">
+      
+    </div>
+    {% if j3.settings.get('langPosition') == 'search' %}
+      <div class="language-currency top-menu">
+        <div class="desktop-language-wrapper">
+          {{ language }}
+        </div>
+        <div class="desktop-currency-wrapper">
+          {{ currency }}
+        </div>
+      </div>
+    {% endif %}
+    <div class="classic-cart-wrapper">
+        {% if j3.settings.get('secondaryMenuPosition') == 'cart' %}
+          <div class="top-menu secondary-menu">{{ j3.settings.get('desktop_top_menu_2') }}</div>
+        {% endif %}
+        {% if j3.settings.get('cartPosition') == 'top' %}
+          <div class="desktop-cart-wrapper default-cart-wrapper">
+              {{ cart }}
+          </div>
+        {% endif %}
+    </div>
+  </div>
+  <div class="desktop-main-menu-wrapper menu-{{ j3.settings.get('headerMenuLayout') }} {% if j3.settings.get('desktop_main_menu_2') %}has-menu-2{% endif %} navbar-nav">
+    {{ j3.document.hasClass('mobile-header-active') ? '' : j3.settings.get('desktop_main_menu') }}
+    {% if j3.settings.get('headerMainMenu2Position') == 'menu' %}
+    
+            <div style="padding-right: 10px; width: 100%;">
+                <script>
+                  (function() {
+                    var cx = '{{ search_key }}';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                  })();
+                </script>
+                <gcse:searchbox-only resultsUrl="index.php?route=common/search/googlesearch"></gcse:searchbox-only>
+                <style>
+                    .gsc-clear-button {
+                        display: none;
+                    }
+                    .gsib_b {
+                        padding: 0px;
+                    }
+                    .gsc-search-box {
+                        border-style:none !important;
+                    }
+                    .gsc-control-searchbox-only.gsc-control-searchbox-only-en {
+                        width: 300px;
+                    }
+                    td.gsc-input {
+                        padding: 0px 0
+                    }
+                    td.gsc-search-button {
+                        margin-left: 0px ;
+                        padding: 0px;
+                    }
+                    td.gsc-search-button > button {
+                        padding: 10px 10px 9px 10px;
+                        margin-left: 0px;
+                        border: none;
+                        border-radius: 0px;
+                        background-color: #9B172C;
+                    }
+                    td.gsc-search-button > button:hover {
+                        background-color: #9B172C;
+                    }
+                    table.gsc-search-box td.gsc-input, table.gsc-search-box td.gsc-input {
+                        padding-right: 0px;
+                    }
+                    .gsc-search-button-v2 {
+                        margin-top: 0px;
+                    }
+                    table.gsc-search-box > tbody > tr {
+                        border: 2px solid #9B172C;
+                    }
+                    /*td.gsc-input > div > table {
+                        border-width: 2px !important;
+                        border-color: none !important;
+                    }*/
+                    .gsc-input-box {
+                        border-color: #9B172C;
+                    }
+                    .gsc-input-box input::placeholder {
+                        color: #9B172C;
+                        font-weight: bold;
+                    }
+                </style>
+                <script>
+                $(document).ready(function() {
+                    setInterval( function() 
+                    {
+                        $("#gsc-i-id1").css("background","none");
+                        $("#gsc-i-id1").parent().css("padding-left","4px");
+                        $("#gsc-i-id1").parent().css("padding-right","0");
+                        $("#gsc-i-id1").parent().css("padding-top","0");
+                        $("#gsc-i-id1").css("text-indent","0");
+                        $("#gsc-i-id1").attr("placeholder","Search G-Biosciences");
+                    },10/*Time*/);
+                });
+                </script>
+            </div>
+            
+    {% endif %}
+    {% if j3.settings.get('cartPosition') == 'menu' %}
+      <div class="desktop-cart-wrapper default-cart-wrapper">
+        {{ cart }}
+      </div>
+    {% endif %}
+  </div>
+</div>

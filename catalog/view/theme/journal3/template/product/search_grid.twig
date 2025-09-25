@@ -1,0 +1,77 @@
+<div class="row main-products product-list">
+{% if products %}
+    {% for product in products %}
+      {% if product is defined and product is not empty %}
+      {% for detail in product %}
+        {% if detail.type == 'pdf' %}
+          {% if detail.pdf %}
+          <div class="product-list-item col-md-3" style="padding:10px;">
+              <div class="product-thumb" style="min-height:300px !important">
+                  <div class="row" style="padding-top:10px">
+                  <div class="image3 col-md-3">
+                      <a href="image/{{ detail.pdf }}" target="_blank">
+                      <img class="image3" src="image/pdfs/pdf_icon.png" style="margin: auto;padding: 10px;padding-bottom: 0px"/>
+                  </a>
+                </div>
+                 <div class="image3 col-md-9" style="padding:10px;padding-bottom: 0px">
+                      <h4 class="name"><a href="image/{{ detail.pdf }}" target="_blank" style="text-transform: uppercase;"><strong>{{ detail.product_name }}</strong></a></h4>
+                    <a href="image/{{ detail.pdf }}" target="_blank">
+                        <p style="text-transform: uppercase;">{% if detail.parent_product_name is not empty %} Product# {{ detail.parent_product_name }} {% endif %}</p>
+                    </a>
+                </div>
+                </div>
+                <div class="product-details">
+                  <div class="caption">
+                    <p>{{ detail.product_description }}</p>
+                  </div>
+                </div>
+
+                <div style=""> 
+                <div class="col-lg-10 col-md-10 col-sm-10" style="overflow: hidden;height: 20px;left: 0;position: absolute;bottom: 10px;">
+                        <a data-toggle="tooltip" data-tooltip-class="icons-menu-tooltip-61" data-placement="top" title="" href="{{ detail.href }}" target="_blank" data-original-title="{{ detail.name | trim('#') }}"><span class="links-text">{{ detail.name | trim('#') }}</span></a>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2" style="right: 0;position: absolute;bottom: 10px;">
+                    <a href="{{ detail.href }}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                </div>
+            </div>
+              </div>
+          </div>
+          {% endif %}
+        {% endif %}
+        {% if detail.type == 'text' %}
+          {% if detail.link %}
+          <div class="product-list-item col-md-3" style="padding:10px;">
+            <div class="product-thumb" style="min-height:300px !important">
+              <div class="row" style="padding-top:15px">
+                  <div class="image3 col-md-3">
+                      <a href="{{ detail.link }}" target="_blank">
+                      <img class="image3" src="image/pdfs/pdf_icon.png" style="margin: auto;padding: 10px;padding-bottom: 0px"/>
+                      </a> 
+                  </div>
+                  <div class="col-md-9">
+                      <h4 class="name"><a href="{{ detail.link }}" target="_blank" >{{ detail.product_name }}</a></h4>
+                      <p>{% if detail.parent_product_name is not empty %} Product# {{ detail.parent_product_name }} {% endif %}</p>
+                  </div>
+              </div>
+                  <div class="product-details">
+                    <div class="caption">
+                      <p>{{ detail.product_description }}</p>
+                    </div>
+                  </div>
+                <div style=""> 
+                <div class="col-lg-10 col-md-10 col-sm-10" style="overflow: hidden;height: 20px;left: 0;position: absolute;bottom: 10px;">
+                        <a data-toggle="tooltip" data-tooltip-class="icons-menu-tooltip-61" data-placement="top" title="" href="{{ detail.href }}" target="_blank" data-original-title="{{ detail.title | trim('#') }}"><span class="links-text">{{ detail.title | trim('#') }}</span></a>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2" style="right: 0;position: absolute;bottom: 10px;">
+                    <a href="{{ detail.href }}"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+    {% endfor %}
+{% endif %}
+</div>

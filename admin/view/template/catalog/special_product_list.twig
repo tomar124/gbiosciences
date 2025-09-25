@@ -1,0 +1,315 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+          <div class="btn-group">
+            <button href="javascript::void(0);" id="datasheets" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              {{ button_datasheets }} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="javascript::void(0);" id="datasheets-All" data-update="1">{{ button_update_all }}</a></li>
+              <li class="divider"></li>
+              <li><a href="javascript::void(0);" id="datasheets-Missing" data-update="0">{{ button_only_missing }}</a></li>
+            </ul>
+          </div>
+        <a href="{{ add }}" data-toggle="tooltip" title="{{ button_add }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+        <button type="button" data-toggle="tooltip" title="{{ button_copy }}" class="btn btn-default" onclick="$('#form-special_product').attr('action', '{{ copy }}').submit()"><i class="fa fa-copy"></i></button>
+        <button type="button" data-toggle="tooltip" title="{{ button_delete }}" class="btn btn-danger" onclick="confirm('{{ text_confirm }}') ? $('#form-special_product').submit() : false;"><i class="fa fa-trash-o"></i></button>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs  %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>{{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success"><i class="fa fa-check-circle"></i>{{ success }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% if warning %}
+    <div class="alert alert-warning"><i class="fa fa-check-circle"></i>{{ warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i>{{ text_upload_download }}</h3>
+      </div>
+      <div class="panel-body">
+        <div class="alert alert-danger"><i class="fa fa-info-circle"></i> {{ text_valid_product_id }}</div>
+        <div class="col-sm-6">
+            <form enctype="multipart/form-data" action="{{ download }}" method="POST">
+              <div class="col-sm-4">
+                <select name="category" class="form-control">
+                  <option value=""> Select Category </option>
+                  {% for category in categories %}
+                    <option value="{{ category.category_id }}">{{ category.name }}</option>
+                  {% endfor %}
+                </select>
+                {% if  error_category %}
+                  <div class="text-danger">{{ error_category }}</div>
+                {% endif %}
+              </div>
+              <div class="col-sm-4">
+                <select name="option" class="form-control">
+                  <option value=""> Select Worksheet </option>
+                  <option value="PRODUCTS_ALL"> Products with no attributes/options </option>
+                  <option value="PRODUCTS_OPTIONS"> Products Options </option>
+                  <option value="PRODUCTS_ATTRIBUTES"> Products Attributes </option>
+                </select>
+                {% if  error_option %}
+                  <div class="text-danger">{{ error_option }}</div>
+                {% endif %}
+              </div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-default" data-toggle="tooltip" title="{{ button_download }}"><i class="fa fa-download"></i> {{ button_download }}</button>
+              </div>
+            </form>
+        </div>
+        <div class="col-sm-6">
+          <form enctype="multipart/form-data" action="{{ upload }}" method="POST" id="upload">
+            <div class="col-sm-8">
+                <input type="file" name="file" class="form-control" style="height: 100%" />
+            </div>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-default" data-toggle="tooltip" title="{{ button_upload }}"><i class="fa fa-upload"></i> {{ button_upload }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
+      </div>
+      <div class="panel-body">
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label" for="input-name">{{ entry_name }}</label>
+                <input type="text" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="input-model">{{ entry_model }}</label>
+                <input type="text" name="filter_model" value="{{ filter_model }}" placeholder="{{ entry_model }}" id="input-model" class="form-control" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label" for="input-price">{{ entry_price }}</label>
+                <input type="text" name="filter_price" value="{{ filter_price }}" placeholder="{{ entry_price }}" id="input-price" class="form-control" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label class="control-label" for="input-status">{{ entry_status }}</label>
+                <select name="filter_status" id="input-status" class="form-control">
+                  <option value="*"></option>
+                  {% if filter_status %}
+                  <option value="1" selected="selected">{{ text_enabled }}</option>
+                  {% else %}
+                  <option value="1">{{ text_enabled }}</option>
+                  {% endif %}
+                  {% if filter_status is not defined and filter_status is not null %}
+                  <option value="0" selected="selected">{{ text_disabled }}</option>
+                  {% else %}
+                  <option value="0">{{ text_disabled }}</option>
+                  {% endif %}
+                </select>
+              </div>
+              <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i>{{ button_filter }}</button>
+            </div>
+          </div>
+        </div>
+        <form action="{{ delete }}" method="post" enctype="multipart/form-data" id="form-special_product">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
+                  <td class="text-center">{{ column_image }}</td>
+                  <td class="text-left">{% if sort == pd.name %}
+                    <a href="{{ sort_product_id }}" class="{{ order|upper }}">{{ column_product_id }}</a>
+                     {% else %}
+                    <a href="{{ sort_product_id }}">{{ column_product_id }}</a>
+                    {% endif %}</td>
+                  <td class="text-left">{% if sort == pd.name %}
+                    <a href="{{ sort_name }}" class="{{ order|upper }}">{{ column_name }}</a>
+                     {% else %}
+                    <a href="{{ sort_name }}">{{ column_name }}</a>
+                    {% endif %}</td>
+                  <td class="text-left">{% if sort == p.model %}
+                      <a href="{{ sort_model }}" class="{{ order|upper }}"><?php echo $column_model; ?></a>
+                    {% else %}
+                    <a href="{{ sort_model }}">{{ column_model }}</a>
+                    {% endif %}</td>
+                  <td class="text-right">{% if sort == p.price %}
+                      <a href="{{ sort_price }}" class="{{ order|upper }}">{{ column_price }}</a>
+                    {% else %}
+                    <a href="{{ sort_price }}">{{ column_price }}</a>
+                    {% endif %}
+                  <td class="text-left">{% if sort == p.status %}
+                      <a href="{{ sort_status }}" class="{{ order|upper }}">{{ column_status }}</a>
+                    {% else %}
+                    <a href="{{ sort_status }}">{{ column_status }}</a>
+                    {% endif %}</td>
+                  <td class="text-right">{{ column_action }}</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% if special_products %}
+                {% for special_product in special_products %}
+                <tr>
+                  <td class="text-center">{%if selected in special_product.product_id %}
+                    <input type="checkbox" name="selected[]" value="{{ special_product.product_id }}" checked="checked" />
+                    {% else %}
+                    <input type="checkbox" name="selected[]" value="{{ special_product.product_id }}" />
+                    {% endif %}
+                  <td class="text-center">{% if special_product.image %}
+                    <img src="{{ special_product.image }}" alt="{{ special_product.name }}" class="img-thumbnail" />
+                    {% else %}
+                    <span class="img-thumbnail list"><i class="fa fa-camera fa-2x"></i></span>
+                    {% endif %}</td>
+                  <td class="text-left">{{ special_product.product_id }}</td>
+                  <td class="text-left">{{ special_product.name }}</td>
+                  <td class="text-left">{{ special_product.model }}</td>
+                  <td class="text-right">{% if special_product.special %} <span style="text-decoration: line-through;">{{ special_product.price }}</span><br/>
+                      <div class="text-danger">{{ special_product.special }}</div>
+                      {% else %}
+                      {{ special_product.price }}
+                      {% endif %}</td>
+                  <td class="text-left">{{ special_product.status }}</td>
+                  <td class="text-right"><a href="{{ special_product.edit }}" data-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td class="text-center" colspan="8">{{ text_no_results }}</td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-sm-6 text-left">{{ pagination }}</div>
+          <div class="col-sm-6 text-right">{{ results }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"><!--
+$(document).bind('keypress', function(e) {
+    if(e.keyCode==13){
+         $('#button-filter').trigger('click');
+    }
+});
+
+$('#upload').submit(function() {
+        $('#upload button').html('<i class="fa fa-spinner fa-spin"></i>').attr('disabled', 'true');
+});
+
+$('#button-filter').on('click', function() {
+	var url = 'index.php?route=catalog/special_product&user_token={{ user_token }}';
+	var filter_name = $('input[name=\'filter_name\']').val();
+	if (filter_name) {
+		url += '&filter_name=' + encodeURIComponent(filter_name);
+	}
+
+	var filter_model = $('input[name=\'filter_model\']').val();
+
+	if (filter_model) {
+		url += '&filter_model=' + encodeURIComponent(filter_model);
+	}
+
+	var filter_price = $('input[name=\'filter_price\']').val();
+
+	if (filter_price) {
+		url += '&filter_price=' + encodeURIComponent(filter_price);
+	}
+
+	var filter_quantity = $('input[name=\'filter_quantity\']').val();
+
+	if (filter_quantity) {
+		url += '&filter_quantity=' + encodeURIComponent(filter_quantity);
+	}
+
+	var filter_status = $('select[name=\'filter_status\']').val();
+
+	if (filter_status != '*') {
+		url += '&filter_status=' + encodeURIComponent(filter_status);
+	}
+
+	location = url;
+});
+//--></script>
+  <script type="text/javascript"><!--
+$('input[name=\'filter_name\']').autocomplete({
+	'source': function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/special_product/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+			dataType: 'json',
+			success: function(json) {
+				response($.map(json, function(item) {
+					return {
+						label: item['name'],
+						value: item['product_id']
+					}
+				}));
+			}
+		});
+	},
+	'select': function(item) {
+		$('input[name=\'filter_name\']').val(item['label']);
+	}
+});
+
+$('input[name=\'filter_model\']').autocomplete({
+	'source': function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/special_product/autocomplete&user_token={{ user_token }}&filter_model=' +  encodeURIComponent(request),
+			dataType: 'json',
+			success: function(json) {
+				response($.map(json, function(item) {
+					return {
+						label: item['model'],
+						value: item['product_id']
+					}
+				}));
+			}
+		});
+	},
+	'select': function(item) {
+		$('input[name=\'filter_model\']').val(item['label']);
+	}
+});
+$('#datasheets-All, #datasheets-Missing').on('click', function(){
+        $.ajax({
+                url: 'index.php?route=catalog/special_product/datasheets&user_token={{ user_token }}&update=' + $(this).data('update'),
+                dataType: 'json',
+                beforeSend: function (){
+                    $('#datasheets').html('<i class="fa fa-spinner fa-spin"></i>');
+                    $('#datasheets').attr('disabled', 'true');
+                    $('#datasheets-messages').html('');
+                },
+                success: function(json) {
+                        $('#datasheets').html('{{ button_datasheets }} <span class="caret"></span>');
+                        $('#datasheets').removeAttr('disabled', 'true');
+                        
+                        $('#datasheets-messages').html('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                }
+        });
+});
+//--></script></div>
+{{ footer }}

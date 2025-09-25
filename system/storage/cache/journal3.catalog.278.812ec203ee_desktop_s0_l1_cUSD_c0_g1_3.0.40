@@ -1,0 +1,492 @@
+<?php $val = array (
+  'css' => '.module-catalog-278 .module-item.swiper-slide{margin-right:10px;width:calc((100% - 3 * 10px) / 4 - 0.01px)}.module-catalog-278 .module-item:not(.swiper-slide){padding:5px;width:calc(100% / 4 - 0.01px)}.one-column #content .module-catalog-278 .module-item.swiper-slide{margin-right:0px;width:calc((100% - 3 * 0px) / 4 - 0.01px)}.one-column #content .module-catalog-278 .module-item:not(.swiper-slide){padding:0px;width:calc(100% / 4 - 0.01px)}.two-column #content .module-catalog-278 .module-item.swiper-slide{margin-right:0px;width:calc((100% - 2 * 0px) / 3 - 0.01px)}.two-column #content .module-catalog-278 .module-item:not(.swiper-slide){padding:0px;width:calc(100% / 3 - 0.01px)}.side-column .module-catalog-278 .module-item.swiper-slide{margin-right:0px;width:calc((100% - 0 * 0px) / 1 - 0.01px)}.side-column .module-catalog-278 .module-item:not(.swiper-slide){padding:0px;width:calc(100% / 1 - 0.01px)}.module-catalog-278  .item-content{padding:8px}.module-catalog-278 .catalog-title{margin-bottom:10px;display:flex;font-size:15px;color:rgba(255, 255, 255, 1);font-weight:700;width:auto;margin-left:0;margin-right:auto;justify-content:flex-start;white-space:normal;overflow:visible;text-overflow:initial}.module-catalog-278
+.subitems{align-items:flex-start}.module-catalog-278 .subitem > a
+span{font-size:14px;color:rgba(245, 245, 245, 1)}.module-catalog-278 .subitem.view-more a
+span{font-size:14px;color:rgba(245, 245, 245, 1)}.module-catalog-278 .subitem>a{white-space:normal;overflow:visible;text-overflow:initial;padding-bottom:3px}.module-catalog-278 .catalog-image{margin-right:5px}.module-catalog-278 .item-assets{flex-direction:row}.module-catalog-278 .item-assets>a{max-width:40%;order:0}.module-catalog-278 .item-assets
+.subitems{width:60%}.module-catalog-278 .item-assets .catalog-image{display:block}@media (max-width: 760px){.module-catalog-278 .module-item.swiper-slide{margin-right:10px;width:calc((100% - 1 * 10px) / 2 - 0.01px)}.module-catalog-278 .module-item:not(.swiper-slide){padding:5px;width:calc(100% / 2 - 0.01px)}.module-catalog-278 .catalog-title{color:rgba(0, 0, 0, 1)}.module-catalog-278 .subitem > a
+span{color:rgba(0, 0, 0, 1)}}@media (max-width: 500px){.module-catalog-278 .module-item.swiper-slide{margin-right:10px;width:calc((100% - 0 * 10px) / 1 - 0.01px)}.module-catalog-278 .module-item:not(.swiper-slide){padding:5px;width:calc(100% / 1 - 0.01px)}.module-catalog-278 .catalog-title{color:rgba(0, 0, 0, 1)}.module-catalog-278 .subitem > a
+span{color:rgba(0, 0, 0, 1)}}@media (max-width: 320px){.module-catalog-278 .catalog-title{color:rgba(0, 0, 0, 1)}.module-catalog-278 .subitem > a
+span{color:rgba(0, 0, 0, 1)}}',
+  'fonts' => 
+  array (
+  ),
+  'settings' => 
+  array (
+    'schedule' => 
+    array (
+      'from' => '',
+      'to' => '',
+      'between' => true,
+    ),
+    'title' => '',
+    'images' => false,
+    'imageDimensions' => 
+    array (
+      'width' => 150,
+      'height' => 150,
+      'resize' => 'fill',
+    ),
+    'itemsPerRow' => 
+    array (
+      'c0' => 
+      array (
+        0 => 
+        array (
+          'items' => 4,
+          'spacing' => 10,
+        ),
+        760 => 
+        array (
+          'items' => 2,
+          'spacing' => 10,
+        ),
+        500 => 
+        array (
+          'items' => 1,
+          'spacing' => 10,
+        ),
+      ),
+      'c1' => 
+      array (
+        0 => 
+        array (
+          'items' => 4,
+          'spacing' => 0,
+        ),
+      ),
+      'c2' => 
+      array (
+        0 => 
+        array (
+          'items' => 3,
+          'spacing' => 0,
+        ),
+      ),
+      'sc' => 
+      array (
+        0 => 
+        array (
+          'items' => 1,
+          'spacing' => 0,
+        ),
+      ),
+    ),
+    'carousel' => false,
+    'viewMoreText' => 'See all products',
+    'status' => true,
+    'id' => 'catalog-68d540d797ed0',
+    'module_id' => 278,
+    'classes' => 
+    array (
+      0 => 'module',
+      1 => 'module-catalog',
+      2 => 'module-catalog-278',
+      'carousel-mode' => false,
+      'image-on-hover' => true,
+    ),
+    'carouselOptions' => 
+    array (
+      'speed' => 0,
+      'autoplay' => false,
+      'pauseOnHover' => false,
+      'loop' => false,
+    ),
+    'items' => 
+    array (
+      2 => 
+      array (
+        'limit' => '6',
+        'id' => '278-2',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-2',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+          0 => 
+          array (
+            'name' => 'Human ELISA Kits',
+            'href' => 'https://gbiosciences.local/Bioassays/ELISA_Kits/Human_ELISA_Kits',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          1 => 
+          array (
+            'name' => 'Murine ELISA Kits',
+            'href' => 'https://gbiosciences.local/Bioassays/ELISA_Kits/Murine_ELISA_Kit',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          2 => 
+          array (
+            'name' => 'Rat ELISA Kits',
+            'href' => 'https://gbiosciences.local/Bioassays/ELISA_Kits/Rat_ELISA_Kits',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          3 => 
+          array (
+            'name' => 'Rabbit ELISA Kits',
+            'href' => 'https://gbiosciences.local/Bioassays/ELISA_Kits/Rabbit_ELISA_Kits',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          4 => 
+          array (
+            'name' => 'Horse ELISA Kits',
+            'href' => 'https://gbiosciences.local/Bioassays/ELISA_Kits/Horse_ELISA_Kits',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          5 => 
+          array (
+            'name' => 'Chicken ELISA Kits',
+            'href' => 'https://gbiosciences.local/Bioassays/ELISA_Kits/Chicken_ELISA_Kit',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+        ),
+        'image' => '',
+        'name' => 'ELISA Kits',
+        'href' => 'https://gbiosciences.local/Bioassays/ELISA_Kits',
+        'total' => '19',
+      ),
+      3 => 
+      array (
+        'limit' => '',
+        'id' => '278-3',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-3',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+          0 => 
+          array (
+            'name' => 'Monoclonal Antibodies',
+            'href' => 'https://gbiosciences.local/Bioassays/Antibodies/Monoclonal_Antibodies',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          1 => 
+          array (
+            'name' => 'Polyclonal Antibodies',
+            'href' => 'https://gbiosciences.local/Bioassays/Antibodies/Polyclonal_Antibodies',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          2 => 
+          array (
+            'name' => 'Epitope Tag Antibodies',
+            'href' => 'https://gbiosciences.local/Bioassays/Antibodies/Epitope_Tag_Antibody',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          3 => 
+          array (
+            'name' => 'Phospho-Specific Antibodies',
+            'href' => 'https://gbiosciences.local/Bioassays/Antibodies/Phospho_Antibodies',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          4 => 
+          array (
+            'name' => 'Acetyl-Specific Antibodies',
+            'href' => 'https://gbiosciences.local/Bioassays/Antibodies/Acetyl_Specific_Antibodies',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          5 => 
+          array (
+            'name' => 'Cleaved-Specific Antibodies',
+            'href' => 'https://gbiosciences.local/Bioassays/Antibodies/Cleaved_Antibodies',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          6 => 
+          array (
+            'name' => 'Histology Antibodies IVD',
+            'href' => 'https://gbiosciences.local/Bioassays/Antibodies/IVD_Antibodies',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+        ),
+        'image' => '',
+        'name' => 'Antibodies',
+        'href' => 'https://gbiosciences.local/Bioassays/Antibodies',
+        'total' => '7',
+      ),
+      4 => 
+      array (
+        'limit' => '',
+        'id' => '278-4',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-4',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+          0 => 
+          array (
+            'name' => 'Cell Toxicity &amp; Proliferation Assays',
+            'href' => 'https://gbiosciences.local/Bioassays/Cell_Health_Assay/Cell-Toxicity-Proliferation-Assays',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          1 => 
+          array (
+            'name' => 'Mitochondrial Assays',
+            'href' => 'https://gbiosciences.local/Bioassays/Cell_Health_Assay/Mitochondrial_Assays',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          2 => 
+          array (
+            'name' => 'Oxidative Stress',
+            'href' => 'https://gbiosciences.local/Bioassays/Cell_Health_Assay/Oxidative_Stress_Assays',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          3 => 
+          array (
+            'name' => 'Antioxidant Assays',
+            'href' => 'https://gbiosciences.local/Bioassays/Cell_Health_Assay/Antioxidant_Assays',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          4 => 
+          array (
+            'name' => 'REDOX Probes',
+            'href' => 'https://gbiosciences.local/Bioassays/Cell_Health_Assay/REDOX_Probes',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          5 => 
+          array (
+            'name' => 'Apoptosis Assays &amp; Accessories',
+            'href' => 'https://gbiosciences.local/Bioassays/Cell_Health_Assay/Apoptosis-Assays-Accessories',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          6 => 
+          array (
+            'name' => 'Food Analysis Assays',
+            'href' => 'https://gbiosciences.local/Bioassays/Cell_Health_Assay/Food_Analysis_Assays',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+        ),
+        'image' => '',
+        'name' => 'Cell Health Assays',
+        'href' => 'https://gbiosciences.local/Bioassays/Cell_Health_Assay',
+        'total' => '7',
+      ),
+      5 => 
+      array (
+        'limit' => '',
+        'id' => '278-5',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-5',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+        ),
+        'image' => '',
+        'name' => 'Protein Quantitation Assays',
+        'href' => 'https://gbiosciences.local/Bioassays/Protein-Quantitation-Assays',
+        'total' => '0',
+      ),
+      6 => 
+      array (
+        'limit' => '',
+        'id' => '278-6',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-6',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+          0 => 
+          array (
+            'name' => 'Esterases &amp; Lipases',
+            'href' => 'https://gbiosciences.local/Bioassays/Enzyme-Substrates/Esterase_Lipase_Enzyme_Substrate',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          1 => 
+          array (
+            'name' => 'Glycosidases',
+            'href' => 'https://gbiosciences.local/Bioassays/Enzyme-Substrates/Glycosidase_Substrates',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          2 => 
+          array (
+            'name' => 'Luciferase',
+            'href' => 'https://gbiosciences.local/Bioassays/Enzyme-Substrates/Luciferase_Enzyme_Substrate',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          3 => 
+          array (
+            'name' => 'Peroxidases',
+            'href' => 'https://gbiosciences.local/Bioassays/Enzyme-Substrates/Peroxidase_Enzyme_Substrates',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          4 => 
+          array (
+            'name' => 'Phosphatases',
+            'href' => 'https://gbiosciences.local/Bioassays/Enzyme-Substrates/Phosphatase_Enzyme_Substrates',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+          5 => 
+          array (
+            'name' => 'Proteases &amp; Peptidases',
+            'href' => 'https://gbiosciences.local/Bioassays/Enzyme-Substrates/Protease_Enzyme_Substrates',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+        ),
+        'image' => '',
+        'name' => 'Enzyme Substrates ',
+        'href' => 'https://gbiosciences.local/Bioassays/Enzyme-Substrates',
+        'total' => '6',
+      ),
+      7 => 
+      array (
+        'limit' => '',
+        'id' => '278-7',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-7',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+          0 => 
+          array (
+            'name' => 'Substrates',
+            'href' => 'https://gbiosciences.local/Bioassays/Galactosidase-Assays/Beta_Gal_Substrates',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+        ),
+        'image' => '',
+        'name' => 'Beta-Galactosidase Assays',
+        'href' => 'https://gbiosciences.local/Bioassays/Galactosidase-Assays',
+        'total' => '1',
+      ),
+      8 => 
+      array (
+        'limit' => '',
+        'id' => '278-8',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-8',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+          0 => 
+          array (
+            'name' => 'Proteases',
+            'href' => 'https://gbiosciences.local/Bioassays/Enzymes/Proteases-214',
+            'image' => 'https://cdn.gbiosciences.com/cache/placeholder-150x150.png',
+            'image2x' => 'https://cdn.gbiosciences.com/cache/placeholder-300x300.png',
+          ),
+        ),
+        'image' => '',
+        'name' => 'Enzymes',
+        'href' => 'https://gbiosciences.local/Bioassays/Enzymes',
+        'total' => '1',
+      ),
+      9 => 
+      array (
+        'limit' => '',
+        'id' => '278-9',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-9',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+        ),
+        'image' => '',
+        'name' => 'Phosphatase Assays &amp; Accessories',
+        'href' => 'https://gbiosciences.local/Bioassays/Phosphatase-Assays-Accessories',
+        'total' => '0',
+      ),
+      10 => 
+      array (
+        'limit' => '',
+        'id' => '278-10',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-10',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+        ),
+        'image' => '',
+        'name' => 'SAM Methyltransferase',
+        'href' => 'https://gbiosciences.local/Bioassays/SAM-Methyltransferase',
+        'total' => '0',
+      ),
+      11 => 
+      array (
+        'limit' => '',
+        'id' => '278-11',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-11',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+        ),
+        'image' => '',
+        'name' => 'Protease Assays &amp; Screening Systems',
+        'href' => 'https://gbiosciences.local/Bioassays/Protease-Assays-Screening-Systems-215',
+        'total' => '0',
+      ),
+      13 => 
+      array (
+        'limit' => '4',
+        'id' => '278-13',
+        'classes' => 
+        array (
+          0 => 'module-item',
+          1 => 'module-item-13',
+          'swiper-slide' => false,
+        ),
+        'items' => 
+        array (
+        ),
+        'image' => '',
+        'name' => 'Inhibitors/Activators',
+        'href' => 'https://gbiosciences.local/Bioassays/GBM',
+        'total' => '0',
+      ),
+    ),
+  ),
+);

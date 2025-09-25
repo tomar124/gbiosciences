@@ -1,0 +1,25 @@
+<!-- order detail -->
+  <table style="border-collapse: collapse; width: 100%; border-top: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; margin-bottom: 20px; color: #25616f;">
+    <thead>
+      <tr>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px; border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; background-color: #F4F4F4; font-weight: bold; text-align: left; padding: 7px;" colspan="2">{{ text_order_detail }}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: left; padding: 7px;"><b>{{ text_order_id }}</b> {{ order_id }}<br />
+          <b>{{ text_date_added }}</b> {{ date_added }}<br />
+          <b>{{ text_payment_method }}</b> {{ payment_method }}<br />
+          {% if shipping_method %}
+          <b>{{ text_shipping_method }}</b> {{ shipping_method }}
+          {% endif %}</td>
+        <td style="font-family: Open Sans, sans-serif; font-size: 12px;	border-right: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC; text-align: left; padding: 7px;"><b>{{ text_email }}</b> {{ email }}<br />
+          <b>{{ text_telephone }}</b> {{ telephone }}<br />
+          <b>{{ text_ip }}</b> {{ ip }}<br />
+          <b>{{ text_order_status }}</b> {{ order_status }}<br />
+          {% if po_number %}
+          <b>PO#: </b> {{ po_number }} <br />
+          {% endif %}</td>
+      </tr>
+    </tbody>
+  </table>

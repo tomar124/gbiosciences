@@ -1,0 +1,190 @@
+<?php return array (
+  0 => 9223372036854775807,
+  1 => 
+  array (
+    0 => 
+    array (
+      '@id' => '/api/waf/boosters/dbb49b18-6c82-4fc6-88dc-a927f8780a78',
+      '@type' => 'Booster',
+      'id' => 'dbb49b18-6c82-4fc6-88dc-a927f8780a78',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.15',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'name' => 'Block country United States of America',
+      'status' => true,
+      'jsonTreeFormat' => 
+      array (
+        'type' => 'group',
+        'id' => 'baa89899-4567-489a-bcde-f1859d30e859',
+        'children1' => 
+        array (
+          'b899a98b-0123-4456-b89a-b1859d30e859' => 
+          array (
+            'type' => 'rule',
+            'properties' => 
+            array (
+              'field' => 'ip.country',
+              'operator' => 'select_equals',
+              'value' => 
+              array (
+                0 => 'US',
+              ),
+              'valueSrc' => 
+              array (
+                0 => 'value',
+              ),
+              'valueType' => 
+              array (
+                0 => 'select',
+              ),
+            ),
+          ),
+        ),
+        'properties' => 
+        array (
+          'conjunction' => 'AND',
+          'not' => false,
+        ),
+      ),
+      'jsonLogicFormat' => 
+      array (
+        'rule' => 
+        array (
+          'and' => 
+          array (
+            0 => 
+            array (
+              '==' => 
+              array (
+                0 => 
+                array (
+                  'var' => 'ip.country',
+                ),
+                1 => 'US',
+              ),
+            ),
+          ),
+        ),
+        'data' => 
+        array (
+          'ip' => 
+          array (
+            'country' => NULL,
+          ),
+        ),
+      ),
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'createdAt' => '2023-01-10T19:38:25+00:00',
+      'updatedAt' => '2023-01-10T19:38:25+00:00',
+      'priority' => '10',
+      'action' => 'block',
+      'type' => 'country',
+      'counter' => 434,
+    ),
+    1 => 
+    array (
+      '@id' => '/api/waf/boosters/7ee228ed-9ccc-4f48-85f7-1849878ecf8c',
+      '@type' => 'Booster',
+      'id' => '7ee228ed-9ccc-4f48-85f7-1849878ecf8c',
+      'site' => 
+      array (
+        '@id' => '/api/waf/sites/cab9498a-fdf8-4fee-8d1f-4298cff73a86',
+        '@type' => 'Site',
+        'workerVersion' => 'v2.1.50',
+        'phpVersion' => '7.2.24-0ubuntu0.18.04.15',
+        'version' => '3.0.2.0',
+        'locale' => 'en_US',
+      ),
+      'name' => 'Block country United States of America',
+      'status' => true,
+      'jsonTreeFormat' => 
+      array (
+        'type' => 'group',
+        'id' => '8b9a8a9b-4567-489a-bcde-f1859d353e96',
+        'children1' => 
+        array (
+          '98aa9a9a-0123-4456-b89a-b1859d353e96' => 
+          array (
+            'type' => 'rule',
+            'properties' => 
+            array (
+              'field' => 'ip.country',
+              'operator' => 'select_equals',
+              'value' => 
+              array (
+                0 => 'US',
+              ),
+              'valueSrc' => 
+              array (
+                0 => 'value',
+              ),
+              'valueType' => 
+              array (
+                0 => 'select',
+              ),
+            ),
+          ),
+        ),
+        'properties' => 
+        array (
+          'conjunction' => 'AND',
+          'not' => false,
+        ),
+      ),
+      'jsonLogicFormat' => 
+      array (
+        'rule' => 
+        array (
+          'and' => 
+          array (
+            0 => 
+            array (
+              '==' => 
+              array (
+                0 => 
+                array (
+                  'var' => 'ip.country',
+                ),
+                1 => 'US',
+              ),
+            ),
+          ),
+        ),
+        'data' => 
+        array (
+          'ip' => 
+          array (
+            'country' => NULL,
+          ),
+        ),
+      ),
+      'createdBy' => 
+      array (
+        '@id' => '/api/users/45c3ff56-b184-4f02-bd1c-c307c8c1bc0c',
+        '@type' => 'User',
+        'firstName' => 'Zeeshan',
+        'lastName' => 'Alam',
+        'gravatarEmailHash' => '8040d13b3dc62fcb44bc5160998634c9',
+      ),
+      'createdAt' => '2023-01-10T19:43:09+00:00',
+      'updatedAt' => '2023-01-10T19:43:09+00:00',
+      'priority' => '10',
+      'action' => 'block',
+      'type' => 'country',
+      'counter' => 2770507,
+    ),
+  ),
+);

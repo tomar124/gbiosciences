@@ -1,0 +1,8 @@
+{% if options %}
+  <select id="special_product_filter[{{ filter_row }}][special_product_filter_id]" name="special_product_filter[{{ filter_row }}][special_product_filter_id]" class="form-control">
+    <option value="">Select Option</option>
+    {% for option in options %}
+      <option value= '{{ option.value }}'>{{ option.text }}</option>
+    {% endfor %}
+  </select>
+{% endif %}
