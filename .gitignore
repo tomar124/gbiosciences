@@ -1,5 +1,5 @@
 *.log
-/system/storage/cache
+/system/storage/cache*
 admin/view/stylesheet/bootstrap.css
 config.php
 .htaccess
