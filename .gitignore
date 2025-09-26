@@ -1,4 +1,7 @@
 *.log
 /system/storage/cache
-
 admin/view/stylesheet/bootstrap.css
+config.php
+.htaccess
+admin/.htaccess
+admin/config.php
