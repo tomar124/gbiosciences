@@ -1,2 +1,4 @@
-system\storage\cache
 *.log
+/system/storage/cache
+
+admin/view/stylesheet/bootstrap.css
